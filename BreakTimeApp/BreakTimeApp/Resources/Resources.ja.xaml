@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!--  App Info  -->
+    <sys:String x:Key="app_name">BreakTimeApp</sys:String>
+
+    <!--  MainWindow  -->
+    <sys:Int32 x:Key="main_window_min_height">200</sys:Int32>
+    <sys:Int32 x:Key="main_window_min_width">500</sys:Int32>
+    <sys:String x:Key="main_window_notify_lbl">通知間隔</sys:String>
+    <sys:String x:Key="main_window_btn">決定</sys:String>
+    <sys:String x:Key="main_window_hour_lbl">時</sys:String>
+    <sys:String x:Key="main_window_minutes_lbl">分</sys:String>
+    <sys:String x:Key="main_window_search">検索</sys:String>
+    <sys:String x:Key="main_window_settings">設定</sys:String>
+    <sys:String x:Key="main_window_notify">通知</sys:String>
+    <sys:String x:Key="main_window_data">データ</sys:String>
+    <sys:String x:Key="main_window_title">WPF UI - 通知アイコン</sys:String>
+
+    <!--  Tray  -->
+    <sys:String x:Key="TrayHome">トレイ1</sys:String>
+
+</ResourceDictionary>
