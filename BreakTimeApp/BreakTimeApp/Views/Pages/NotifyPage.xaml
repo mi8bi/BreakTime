@@ -21,7 +21,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="40" />
@@ -29,64 +29,78 @@
             </Grid.RowDefinitions>
 
             <ui:ListView
+                Name="listView"
                 d:ItemsSource="{d:SampleData ItemCount=4}"
                 ItemsSource="{Binding ViewModel.Items}"
                 SelectedItem="{Binding ViewModel.SelectedItem}">
                 <ui:ListView.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Style.Triggers>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="FontWeight" Value="Bold" />
-                                <Setter Property="Background" Value="Transparent" />
-                            </Trigger>
-                        </Style.Triggers>
-                        <Style.Resources>
-                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
-                        </Style.Resources>
+                    <Style TargetType="ui:ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                     </Style>
                 </ui:ListView.ItemContainerStyle>
+
                 <ui:ListView.ItemTemplate>
                     <DataTemplate>
 
-                        <StackPanel
-                            Height="40"
-                            Margin="5"
-                            Orientation="Horizontal">
-                            <ProgressBar
-                                Width="200"
-                                Height="20"
-                                Margin="5,0,0,0"
-                                Foreground="#0085FC"
-                                IsIndeterminate="False" />
-                            <TextBlock
-                                Margin="5,0,0,0"
-                                VerticalAlignment="Center"
-                                FontSize="16"
-                                Text="{Binding End, StringFormat=HH:mm:ss}" />
-                            <ui:Button
-                                Margin="5,0,0,0"
-                                VerticalAlignment="Center"
-                                Content="編集"
-                                Icon="{ui:SymbolIcon ClockAlarm24}" />
-                            <ui:Button
-                                Margin="5,0,0,0"
-                                VerticalAlignment="Center"
-                                Command="{Binding ViewModel.RemoveItemCommand, RelativeSource={RelativeSource AncestorType=Page}}"
-                                CommandParameter="{Binding}"
-                                Content="削除"
-                                Icon="{ui:SymbolIcon Delete24}" />
-                        </StackPanel>
+                        <ui:CardControl Margin="0,5,0,5" Icon="{ui:SymbolIcon ClockAlarm24}">
+                            <ui:CardControl.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="6"
+                                    Direction="-90"
+                                    Opacity="0.2"
+                                    RenderingBias="Quality"
+                                    ShadowDepth="0" />
+                            </ui:CardControl.Effect>
+                            <ui:CardControl.Header>
+                                <ui:TextBlock
+                                    Grid.Row="0"
+                                    FontTypography="Body"
+                                    Text="{DynamicResource notify_page_item_title}" />
+                            </ui:CardControl.Header>
+                            <StackPanel
+                                Grid.Column="1"
+                                Height="40"
+                                Margin="5"
+                                Orientation="Horizontal">
+                                <ProgressBar
+                                    Width="200"
+                                    Height="20"
+                                    Margin="5,0,0,0"
+                                    Foreground="#0085FC"
+                                    IsIndeterminate="False" />
+                                <TextBlock
+                                    Margin="10,0,0,0"
+                                    VerticalAlignment="Center"
+                                    d:Text="08:23:11"
+                                    FontSize="16"
+                                    Text="{Binding End, StringFormat=HH:mm:ss}" />
+                                <ui:Button
+                                    Margin="10,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Command="{Binding ViewModel.EditItemCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                    CommandParameter="{Binding}"
+                                    Icon="{ui:SymbolIcon Edit24}" />
+                                <ui:Button
+                                    Margin="10,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Command="{Binding ViewModel.RemoveItemCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                    CommandParameter="{Binding}"
+                                    Icon="{ui:SymbolIcon Delete24}" />
+                            </StackPanel>
+                        </ui:CardControl>
+
                     </DataTemplate>
                 </ui:ListView.ItemTemplate>
             </ui:ListView>
-            <ui:Button
+
+            <ui:CardControl
                 Grid.Row="1"
                 Grid.RowSpan="2"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Command="{Binding ViewModel.AddCommand}"
-                Foreground="#0080F0"
-                Icon="{ui:SymbolIcon AddCircle24}" />
+                Icon="{ui:SymbolIcon Add24}" />
+
         </Grid>
     </Grid>
 </Page>

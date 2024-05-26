@@ -5,6 +5,18 @@ namespace BreakTimeApp.ViewModels.Windows
 {
     public partial class MainWindowViewModel : ObservableObject
     {
+        [ObservableProperty]
+        private string _applicationTitle;
+
+        [ObservableProperty]
+        private string _searchText;
+
+        [ObservableProperty]
+        private ObservableCollection<object> _menuItems;
+
+        [ObservableProperty]
+        private ObservableCollection<object> _footerMenuItems;
+
         public MainWindowViewModel()
         {
             ApplicationTitle = GetResource<string>("main_window_title");
@@ -36,18 +48,6 @@ namespace BreakTimeApp.ViewModels.Windows
             };
 
         }
-
-        [ObservableProperty]
-        private string _applicationTitle;
-
-        [ObservableProperty]
-        private string _searchText;
-
-        [ObservableProperty]
-        private ObservableCollection<object> _menuItems;
-
-        [ObservableProperty]
-        private ObservableCollection<object> _footerMenuItems;
 
         private T GetResource<T>(string key)
         {

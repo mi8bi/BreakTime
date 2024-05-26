@@ -5,9 +5,8 @@
     <!--  App Info  -->
     <sys:String x:Key="app_name">BreakTimeApp</sys:String>
 
+    <!--  Windows  -->
     <!--  MainWindow  -->
-    <sys:Int32 x:Key="main_window_min_height">200</sys:Int32>
-    <sys:Int32 x:Key="main_window_min_width">600</sys:Int32>
     <sys:String x:Key="main_window_notify_lbl">Notification interval</sys:String>
     <sys:String x:Key="main_window_btn">Confirm</sys:String>
     <sys:String x:Key="main_window_hour_lbl">hour</sys:String>
@@ -17,6 +16,17 @@
     <sys:String x:Key="main_window_notify">Notify</sys:String>
     <sys:String x:Key="main_window_data">Data</sys:String>
     <sys:String x:Key="main_window_title">WPF UI - NotifyIcon2</sys:String>
+
+    <!--  NotifyDetailsWindow  -->
+    <sys:String x:Key="notify_details_title">details</sys:String>
+    <sys:String x:Key="notify_details_window_notify_lbl">Notification interval</sys:String>
+    <sys:String x:Key="notify_details_window_btn">Confirm</sys:String>
+    <sys:String x:Key="notify_details_window_hour_lbl">hour</sys:String>
+    <sys:String x:Key="notify_details_window_minutes_lbl">minutes</sys:String>
+    <sys:String x:Key="notify_details_window_seconds_lbl">seconds</sys:String>
+
+    <!--  Pages  -->
+    <sys:String x:Key="notify_page_item_title">Notify Timer</sys:String>
 
     <!--  Tray  -->
     <sys:String x:Key="TrayHome">TrayHome</sys:String>

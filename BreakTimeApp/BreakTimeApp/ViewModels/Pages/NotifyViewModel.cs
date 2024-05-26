@@ -1,40 +1,57 @@
 ﻿using BreakTimeApp.Models;
+using BreakTimeApp.Services;
+using BreakTimeApp.Views.Windows;
 using System.Collections.ObjectModel;
 
 namespace BreakTimeApp.ViewModels.Pages
 {
     public partial class NotifyViewModel : ObservableObject
     {
+        private readonly WindowsProviderService _windowsProviderService;
+
+        //「1時間後」を表すTimeSpanオブジェクトを作成
+        private readonly TimeSpan DEFAULT_TIMESPAN = new TimeSpan(1, 0, 0);
+
         [ObservableProperty]
         private ObservableCollection<TimeStoreItem> _items = new ObservableCollection<TimeStoreItem>();
 
         [ObservableProperty]
         private TimeStoreItem _selectedItem;
 
-        public NotifyViewModel()
+        public NotifyViewModel(WindowsProviderService windowsProviderService)
         {
-            //「1日と2時間45分15秒」を表すTimeSpanオブジェクトを作成する
-            TimeSpan ts1 = new TimeSpan(1, 2, 45, 15);
-            // 初期アイテムを追加
-            Items.Add(new TimeStoreItem { Start = DateTime.Now, End = DateTime.Now, Span = ts1 });
-            Items.Add(new TimeStoreItem { Start = DateTime.Now, End = DateTime.Now + ts1, Span = ts1 });
-            Items.Add(new TimeStoreItem { Start = DateTime.Now, End = DateTime.Now + ts1, Span = ts1 });
+            _windowsProviderService = windowsProviderService;
         }
 
         [RelayCommand]
-        private void Add()
+        private void OnAdd()
         {
-            //「1日と2時間45分15秒」を表すTimeSpanオブジェクトを作成する
-            TimeSpan ts1 = new TimeSpan(1, 2, 45, 15);
             // 新しいアイテムを追加
-            Items.Add(new TimeStoreItem { Start = DateTime.Now, End = DateTime.Now + ts1, Span = ts1 });
+            Items.Add(new TimeStoreItem
+            {
+                Start = DateTime.Now,
+                End = DateTime.Now + DEFAULT_TIMESPAN,
+                Span = DEFAULT_TIMESPAN
+            });
         }
 
         [RelayCommand]
-        private void RemoveItem(TimeStoreItem item)
+        private void OnRemoveItem(TimeStoreItem item)
         {
             if (item != null && Items.Contains(item))
                 Items.Remove(item);
+        }
+
+        [RelayCommand]
+        private void OnEditItem(TimeStoreItem item)
+        {
+            if (item != null && Items.Contains(item))
+            {
+                var window = _windowsProviderService.GetWindow<NotifyDetailsWindow>();
+                window.Owner = Application.Current.MainWindow;
+                window.ViewModel.Item = item;
+                window.ShowDialog();
+            }
         }
     }
 }

@@ -45,7 +45,14 @@ namespace BreakTimeApp
                 // Main window with navigation
                 services.AddSingleton<INavigationWindow, MainWindow>();
                 services.AddSingleton<MainWindowViewModel>();
+                services.AddSingleton<WindowsProviderService>();
+                // 表示するウィンドウの登録
+                services.AddTransient<NotifyDetailsWindow>();
+                services.AddSingleton<NotifyDetailsWindowViewModel>();
 
+                // ContentDialogs
+
+                // Pages
                 services.AddSingleton<NotifyPage>();
                 services.AddSingleton<NotifyViewModel>();
                 services.AddSingleton<DataPage>();
