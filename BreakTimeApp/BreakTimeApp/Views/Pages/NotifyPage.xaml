@@ -43,14 +43,6 @@
                     <DataTemplate>
 
                         <ui:CardControl Margin="0,5,0,5" Icon="{ui:SymbolIcon ClockAlarm24}">
-                            <ui:CardControl.Effect>
-                                <DropShadowEffect
-                                    BlurRadius="6"
-                                    Direction="-90"
-                                    Opacity="0.2"
-                                    RenderingBias="Quality"
-                                    ShadowDepth="0" />
-                            </ui:CardControl.Effect>
                             <ui:CardControl.Header>
                                 <ui:TextBlock
                                     Grid.Row="0"

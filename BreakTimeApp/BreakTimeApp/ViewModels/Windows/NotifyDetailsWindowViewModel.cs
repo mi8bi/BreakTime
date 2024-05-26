@@ -9,6 +9,8 @@ namespace BreakTimeApp.ViewModels.Windows
 
         public event EventHandler CloseRequested;
 
+        private readonly IServiceProvider _serviceProvider;
+
         public int[] Hours { get; set; }
 
         public int[] Minutes { get; set; }

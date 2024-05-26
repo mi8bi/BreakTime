@@ -23,6 +23,8 @@
          */
         public static readonly int MAX_SECONDS = 60;
 
+        public Guid Guid { get; set; }
+
         public DateTime Start { get; set; }
 
         [ObservableProperty]

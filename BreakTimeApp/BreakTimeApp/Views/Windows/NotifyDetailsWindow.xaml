@@ -54,7 +54,7 @@
                 <ComboBox
                     Margin="8"
                     ItemsSource="{Binding ViewModel.Hours}"
-                    SelectedItem="{Binding ViewModel.SelectedHours, Mode=OneWay}" />
+                    SelectedItem="{Binding ViewModel.SelectedHours}" />
                 <Label
                     Margin="8"
                     VerticalAlignment="Center"
@@ -62,7 +62,7 @@
                 <ComboBox
                     Margin="8"
                     ItemsSource="{Binding ViewModel.Minutes}"
-                    SelectedItem="{Binding ViewModel.SelectedMinutes, Mode=OneWay}" />
+                    SelectedItem="{Binding ViewModel.SelectedMinutes}" />
                 <Label
                     Margin="8"
                     VerticalAlignment="Center"
@@ -70,7 +70,7 @@
                 <ComboBox
                     Margin="8"
                     ItemsSource="{Binding ViewModel.Seconds}"
-                    SelectedItem="{Binding ViewModel.SelectedSeconds, Mode=OneWay}" />
+                    SelectedItem="{Binding ViewModel.SelectedSeconds}" />
                 <Label
                     Margin="8,0,16,0"
                     VerticalAlignment="Center"

@@ -1,5 +1,6 @@
 ﻿using BreakTimeApp.Models;
 using BreakTimeApp.Services;
+using BreakTimeApp.ViewModels.Windows;
 using BreakTimeApp.Views.Windows;
 using System.Collections.ObjectModel;
 
@@ -7,6 +8,7 @@ namespace BreakTimeApp.ViewModels.Pages
 {
     public partial class NotifyViewModel : ObservableObject
     {
+        private readonly IServiceProvider _serviceProvider;
         private readonly WindowsProviderService _windowsProviderService;
 
         //「1時間後」を表すTimeSpanオブジェクトを作成
@@ -18,8 +20,11 @@ namespace BreakTimeApp.ViewModels.Pages
         [ObservableProperty]
         private TimeStoreItem _selectedItem;
 
-        public NotifyViewModel(WindowsProviderService windowsProviderService)
+        public NotifyViewModel(
+            IServiceProvider serviceProvider,
+            WindowsProviderService windowsProviderService)
         {
+            _serviceProvider = serviceProvider;
             _windowsProviderService = windowsProviderService;
         }
 
@@ -29,6 +34,7 @@ namespace BreakTimeApp.ViewModels.Pages
             // 新しいアイテムを追加
             Items.Add(new TimeStoreItem
             {
+                Guid = Guid.NewGuid(),
                 Start = DateTime.Now,
                 End = DateTime.Now + DEFAULT_TIMESPAN,
                 Span = DEFAULT_TIMESPAN
@@ -47,10 +53,14 @@ namespace BreakTimeApp.ViewModels.Pages
         {
             if (item != null && Items.Contains(item))
             {
-                var window = _windowsProviderService.GetWindow<NotifyDetailsWindow>();
-                window.Owner = Application.Current.MainWindow;
-                window.ViewModel.Item = item;
-                window.ShowDialog();
+                // 1. NotifyDetailsWindowのViewModelを取得してデータを設定
+                var viewModel = _serviceProvider.GetService(typeof(NotifyDetailsWindowViewModel)) as NotifyDetailsWindowViewModel;
+                viewModel.Item = item;
+                viewModel.SelectedHours = item.Span.Hours;
+                viewModel.SelectedMinutes = item.Span.Minutes;
+                viewModel.SelectedSeconds = item.Span.Seconds;
+                // 2. 1で設定したデータが入力されているのでウィンドウを表示
+                _windowsProviderService.ShowDialog<NotifyDetailsWindow>();
             }
         }
     }
