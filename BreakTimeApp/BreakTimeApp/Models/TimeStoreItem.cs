@@ -1,4 +1,6 @@
-﻿namespace BreakTimeApp.Models
+﻿using Wpf.Ui.Controls;
+
+namespace BreakTimeApp.Models
 {
     public partial class TimeStoreItem : ObservableObject
     {
@@ -30,5 +32,12 @@
         [ObservableProperty]
         private DateTime _end;
         public TimeSpan Span { get; set; }
+
+        [ObservableProperty]
+        private bool _active;
+
+        [ObservableProperty]
+        private SymbolRegular _icon;
+
     }
 }

@@ -54,6 +54,14 @@
                                 Height="40"
                                 Margin="5"
                                 Orientation="Horizontal">
+                                <ToggleButton
+                                    Width="48"
+                                    Background="{x:Null}"
+                                    Command="{Binding ViewModel.ToggleItemCommand, RelativeSource={RelativeSource AncestorType=Page}}"
+                                    CommandParameter="{Binding}"
+                                    IsChecked="{Binding Active}">
+                                    <ui:SymbolIcon Symbol="{Binding Icon}" />
+                                </ToggleButton>
                                 <ProgressBar
                                     Width="200"
                                     Height="20"
@@ -90,7 +98,7 @@
                 Grid.RowSpan="2"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Command="{Binding ViewModel.AddCommand}"
+                Command="{Binding ViewModel.AddItemCommand}"
                 Icon="{ui:SymbolIcon Add24}" />
 
         </Grid>

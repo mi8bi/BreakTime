@@ -3,6 +3,7 @@ using BreakTimeApp.Services;
 using BreakTimeApp.ViewModels.Windows;
 using BreakTimeApp.Views.Windows;
 using System.Collections.ObjectModel;
+using Wpf.Ui.Controls;
 
 namespace BreakTimeApp.ViewModels.Pages
 {
@@ -28,8 +29,13 @@ namespace BreakTimeApp.ViewModels.Pages
             _windowsProviderService = windowsProviderService;
         }
 
+        private bool canExecuteItem (TimeStoreItem item)
+        {
+            return item != null && Items.Contains(item);
+        }
+
         [RelayCommand]
-        private void OnAdd()
+        private void OnAddItem()
         {
             // 新しいアイテムを追加
             Items.Add(new TimeStoreItem
@@ -37,30 +43,43 @@ namespace BreakTimeApp.ViewModels.Pages
                 Guid = Guid.NewGuid(),
                 Start = DateTime.Now,
                 End = DateTime.Now + DEFAULT_TIMESPAN,
-                Span = DEFAULT_TIMESPAN
+                Span = DEFAULT_TIMESPAN,
+                Active = false,
+                Icon = SymbolRegular.TriangleRight20
             });
         }
 
-        [RelayCommand]
+        [RelayCommand(CanExecute = nameof(canExecuteItem))]
         private void OnRemoveItem(TimeStoreItem item)
         {
-            if (item != null && Items.Contains(item))
-                Items.Remove(item);
+            Items.Remove(item);
         }
 
-        [RelayCommand]
+        [RelayCommand(CanExecute = nameof(canExecuteItem))]
         private void OnEditItem(TimeStoreItem item)
         {
-            if (item != null && Items.Contains(item))
+            // 1. NotifyDetailsWindowのViewModelを取得してデータを設定
+            var viewModel = _serviceProvider.GetService(typeof(NotifyDetailsWindowViewModel)) as NotifyDetailsWindowViewModel;
+            viewModel.Item = item;
+            viewModel.SelectedHours = item.Span.Hours;
+            viewModel.SelectedMinutes = item.Span.Minutes;
+            viewModel.SelectedSeconds = item.Span.Seconds;
+            // 2. 1で設定したデータが入力されているのでウィンドウを表示
+            _windowsProviderService.ShowDialog<NotifyDetailsWindow>();
+        }
+
+        [RelayCommand(CanExecute = nameof(canExecuteItem))]
+        private void OnToggleItem(TimeStoreItem item)
+        {
+            if (item.Active)
             {
-                // 1. NotifyDetailsWindowのViewModelを取得してデータを設定
-                var viewModel = _serviceProvider.GetService(typeof(NotifyDetailsWindowViewModel)) as NotifyDetailsWindowViewModel;
-                viewModel.Item = item;
-                viewModel.SelectedHours = item.Span.Hours;
-                viewModel.SelectedMinutes = item.Span.Minutes;
-                viewModel.SelectedSeconds = item.Span.Seconds;
-                // 2. 1で設定したデータが入力されているのでウィンドウを表示
-                _windowsProviderService.ShowDialog<NotifyDetailsWindow>();
+                // 停止
+                item.Icon = SymbolRegular.Stop20;
+            }
+            else
+            {
+                // 開始
+                item.Icon = SymbolRegular.TriangleRight20;
             }
         }
     }
