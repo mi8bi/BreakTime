@@ -1,9 +1,17 @@
-﻿using Wpf.Ui.Controls;
+﻿using System.Windows.Threading;
+using Wpf.Ui.Controls;
 
 namespace BreakTimeApp.Models
 {
     public partial class TimeStoreItem : ObservableObject
     {
+        /**
+         * <summary>
+         * 1秒間隔
+         * </summary>
+         */
+        private static readonly double INTERVAL = 1;
+
         /**
          * <summary>
          * 最大時間 (時)
@@ -25,6 +33,8 @@ namespace BreakTimeApp.Models
          */
         public static readonly int MAX_SECONDS = 60;
 
+        private readonly DispatcherTimer _timer;
+
         public Guid Guid { get; set; }
 
         public DateTime Start { get; set; }
@@ -34,10 +44,47 @@ namespace BreakTimeApp.Models
         public TimeSpan Span { get; set; }
 
         [ObservableProperty]
-        private bool _active;
+        private bool _isRunning;
 
         [ObservableProperty]
         private SymbolRegular _icon;
+
+        [ObservableProperty]
+        private double _progress;
+
+        public TimeStoreItem()
+        {
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(INTERVAL);
+            _timer.Tick += timer_Tick;
+            _timer.Tick += toast_ElapsedEventHandler;
+        }
+
+        private void timer_Tick(object? sender, EventArgs e)
+        {
+            double progressUnit = 100 / Span.TotalSeconds;
+            Progress += progressUnit;
+        }
+
+        private void toast_ElapsedEventHandler(object? sender, EventArgs e)
+        {
+            if (!IsRunning)
+            {
+                // TODO toast message
+            }
+        }
+
+        internal void StartTimer()
+        {
+            if (!IsRunning)
+                _timer.Start();
+        }
+
+        internal void StopTimer()
+        {
+            if (IsRunning)
+                _timer.Stop();
+        }
 
     }
 }

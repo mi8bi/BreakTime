@@ -44,7 +44,7 @@ namespace BreakTimeApp.ViewModels.Pages
                 Start = DateTime.Now,
                 End = DateTime.Now + DEFAULT_TIMESPAN,
                 Span = DEFAULT_TIMESPAN,
-                Active = false,
+                IsRunning = true,
                 Icon = SymbolRegular.TriangleRight20
             });
         }
@@ -71,15 +71,17 @@ namespace BreakTimeApp.ViewModels.Pages
         [RelayCommand(CanExecute = nameof(canExecuteItem))]
         private void OnToggleItem(TimeStoreItem item)
         {
-            if (item.Active)
+            if (item.IsRunning)
             {
                 // 停止
-                item.Icon = SymbolRegular.Stop20;
+                item.Icon = SymbolRegular.TriangleRight20;
+                item.StopTimer();
             }
             else
             {
                 // 開始
-                item.Icon = SymbolRegular.TriangleRight20;
+                item.Icon = SymbolRegular.Stop20;
+                item.StartTimer();
             }
         }
     }

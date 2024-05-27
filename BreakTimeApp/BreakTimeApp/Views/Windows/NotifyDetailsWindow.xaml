@@ -30,22 +30,24 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ui:TitleBar Title="{DynamicResource notify_details_title}" Grid.Row="0">
+        <ui:TitleBar
+            Title="{DynamicResource notify_details_title}"
+            Grid.Row="0"
+            CanMaximize="False">
             <ui:TitleBar.Icon>
                 <ui:ImageIcon Source="pack://application:,,,/Assets/wpfui-icon-256.png" />
             </ui:TitleBar.Icon>
         </ui:TitleBar>
 
         <DockPanel Grid.Row="1">
-            <Label
+            <TextBlock
                 Grid.Row="0"
-                Margin="15,0,0,0"
+                Margin="15"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
-                Content="{DynamicResource notify_details_window_notify_lbl}"
                 DockPanel.Dock="Left"
                 FontSize="16"
-                Foreground="Black" />
+                Text="{DynamicResource notify_details_window_notify_lbl}" />
             <StackPanel
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
