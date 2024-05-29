@@ -6,6 +6,9 @@ using BreakTimeApp.Views.Windows;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
+using System;
 using System.IO;
 using System.Reflection;
 using System.Windows.Threading;
@@ -25,7 +28,14 @@ namespace BreakTimeApp
         // https://docs.microsoft.com/dotnet/core/extensions/logging
         private static readonly IHost _host = Host
             .CreateDefaultBuilder()
-            .ConfigureAppConfiguration(c => { c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)); })
+            .ConfigureAppConfiguration((hostingContext, config) => {
+                var environment = hostingContext.HostingEnvironment.EnvironmentName;
+                config.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location));
+                config
+                //.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables();
+            })
             .ConfigureServices((context, services) =>
             {
                 services.AddHostedService<ApplicationHostService>();
@@ -50,8 +60,6 @@ namespace BreakTimeApp
                 services.AddTransient<NotifyDetailsWindow>();
                 services.AddSingleton<NotifyDetailsWindowViewModel>();
 
-                // ContentDialogs
-
                 // Pages
                 services.AddSingleton<NotifyPage>();
                 services.AddSingleton<NotifyViewModel>();
@@ -59,7 +67,18 @@ namespace BreakTimeApp
                 services.AddSingleton<DataViewModel>();
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
-            }).Build();
+            })
+            .ConfigureLogging(logging =>
+            {
+                // ロギングの設定
+                // 既定のロガーを削除
+                logging.ClearProviders();
+
+                // NLogの追加
+                logging.SetMinimumLevel(LogLevel.Trace);
+                logging.AddNLog();
+            })
+            .Build();
 
         /// <summary>
         /// Gets registered service.

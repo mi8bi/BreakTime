@@ -1,7 +1,9 @@
-﻿using BreakTimeApp.Models;
+﻿using BreakTimeApp.Helpers;
+using BreakTimeApp.Models;
 using BreakTimeApp.Services;
 using BreakTimeApp.ViewModels.Windows;
 using BreakTimeApp.Views.Windows;
+using Microsoft.Extensions.Logging;
 using System.Collections.ObjectModel;
 using Wpf.Ui.Controls;
 
@@ -10,6 +12,7 @@ namespace BreakTimeApp.ViewModels.Pages
     public partial class NotifyViewModel : ObservableObject
     {
         private readonly IServiceProvider _serviceProvider;
+        private readonly ILogger<NotifyViewModel> _logger;
         private readonly WindowsProviderService _windowsProviderService;
 
         //「1時間後」を表すTimeSpanオブジェクトを作成
@@ -23,9 +26,11 @@ namespace BreakTimeApp.ViewModels.Pages
 
         public NotifyViewModel(
             IServiceProvider serviceProvider,
+            ILogger<NotifyViewModel> logger,
             WindowsProviderService windowsProviderService)
         {
             _serviceProvider = serviceProvider;
+            _logger = logger;
             _windowsProviderService = windowsProviderService;
         }
 
@@ -47,6 +52,8 @@ namespace BreakTimeApp.ViewModels.Pages
                 IsRunning = true,
                 Icon = SymbolRegular.TriangleRight20
             });
+
+            _logger.LogInformation(AppLogEvents.UserAction, "item add");
         }
 
         [RelayCommand(CanExecute = nameof(canExecuteItem))]

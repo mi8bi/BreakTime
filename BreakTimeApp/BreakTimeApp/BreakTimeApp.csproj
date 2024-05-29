@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
@@ -11,10 +11,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Content Include="appsettings.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
 		<Content Include="wpfui-icon.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="NLog" Version="5.3.2" />
+		<PackageReference Include="NLog.Extensions.Logging" Version="5.3.11" />
 		<PackageReference Include="WPF-UI" Version="3.0.4" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0 " />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2 " />
@@ -22,6 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Remove="appsettings.json" />
 		<None Remove="Assets\wpfui-icon-256.png" />
 		<None Remove="Assets\wpfui-icon-1024.png" />
 	</ItemGroup>
