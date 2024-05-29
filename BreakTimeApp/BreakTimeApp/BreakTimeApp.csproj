@@ -18,6 +18,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AspectInjector" Version="2.8.2" />
 		<PackageReference Include="NLog" Version="5.3.2" />
 		<PackageReference Include="NLog.Extensions.Logging" Version="5.3.11" />
 		<PackageReference Include="WPF-UI" Version="3.0.4" />

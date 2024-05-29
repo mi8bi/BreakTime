@@ -39,6 +39,7 @@ namespace BreakTimeApp.ViewModels.Pages
             return item != null && Items.Contains(item);
         }
 
+        [LogAspect]
         [RelayCommand]
         private void OnAddItem()
         {
