@@ -1,4 +1,5 @@
-﻿using BreakTimeApp.ViewModels.Windows;
+﻿using BreakTimeApp.Helpers;
+using BreakTimeApp.ViewModels.Windows;
 using Wpf.Ui;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
@@ -43,6 +44,7 @@ namespace BreakTimeApp.Views.Windows
         /// <summary>
         /// Raises the closed event.
         /// </summary>
+        [LogAspect]
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -51,11 +53,13 @@ namespace BreakTimeApp.Views.Windows
             Application.Current.Shutdown();
         }
 
+        [LogAspect]
         INavigationView INavigationWindow.GetNavigation()
         {
             throw new NotImplementedException();
         }
 
+        [LogAspect]
         public void SetServiceProvider(IServiceProvider serviceProvider)
         {
             throw new NotImplementedException();

@@ -86,6 +86,7 @@ namespace BreakTimeApp
         /// </summary>
         /// <typeparam name="T">Type of the service to get.</typeparam>
         /// <returns>Instance of the service or <see langword="null"/>.</returns>
+        [LogAspect]
         public static T GetService<T>()
             where T : class
         {
@@ -95,6 +96,7 @@ namespace BreakTimeApp
         /// <summary>
         /// Occurs when the application is loading.
         /// </summary>
+        [LogAspect]
         private void OnStartup(object sender, StartupEventArgs e)
         {
             _host.Start();
@@ -103,6 +105,7 @@ namespace BreakTimeApp
         /// <summary>
         /// Occurs when the application is closing.
         /// </summary>
+        [LogAspect]
         private async void OnExit(object sender, ExitEventArgs e)
         {
             await _host.StopAsync();
@@ -113,6 +116,7 @@ namespace BreakTimeApp
         /// <summary>
         /// Occurs when an exception is thrown by an application but not handled.
         /// </summary>
+        [LogAspect]
         private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             // For more info see https://docs.microsoft.com/en-us/dotnet/api/system.windows.application.dispatcherunhandledexception?view=windowsdesktop-6.0

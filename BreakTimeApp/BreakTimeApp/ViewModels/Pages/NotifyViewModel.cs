@@ -34,6 +34,7 @@ namespace BreakTimeApp.ViewModels.Pages
             _windowsProviderService = windowsProviderService;
         }
 
+        [LogAspect]
         private bool canExecuteItem (TimeStoreItem item)
         {
             return item != null && Items.Contains(item);
@@ -57,12 +58,14 @@ namespace BreakTimeApp.ViewModels.Pages
             _logger.LogInformation(AppLogEvents.UserAction, "item add");
         }
 
+        [LogAspect]
         [RelayCommand(CanExecute = nameof(canExecuteItem))]
         private void OnRemoveItem(TimeStoreItem item)
         {
             Items.Remove(item);
         }
 
+        [LogAspect]
         [RelayCommand(CanExecute = nameof(canExecuteItem))]
         private void OnEditItem(TimeStoreItem item)
         {
@@ -76,6 +79,7 @@ namespace BreakTimeApp.ViewModels.Pages
             _windowsProviderService.ShowDialog<NotifyDetailsWindow>();
         }
 
+        [LogAspect]
         [RelayCommand(CanExecute = nameof(canExecuteItem))]
         private void OnToggleItem(TimeStoreItem item)
         {

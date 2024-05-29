@@ -1,4 +1,5 @@
-﻿using BreakTimeApp.Models;
+﻿using BreakTimeApp.Helpers;
+using BreakTimeApp.Models;
 
 namespace BreakTimeApp.ViewModels.Windows
 {
@@ -30,6 +31,7 @@ namespace BreakTimeApp.ViewModels.Windows
             Seconds = Enumerable.Range(0, TimeStoreItem.MAX_SECONDS).ToArray();
         }
 
+        [LogAspect]
         [RelayCommand]
         private void OnChangeItem()
         {

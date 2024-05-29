@@ -6,6 +6,8 @@ namespace BreakTimeApp.Helpers
 {
     internal class EnumToBooleanConverter : IValueConverter
     {
+
+        [LogAspect]
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (parameter is not String enumString)
@@ -23,6 +25,7 @@ namespace BreakTimeApp.Helpers
             return enumValue.Equals(value);
         }
 
+        [LogAspect]
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (parameter is not String enumString)

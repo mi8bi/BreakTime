@@ -1,4 +1,5 @@
-﻿using System.Windows.Threading;
+﻿using BreakTimeApp.Helpers;
+using System.Windows.Threading;
 using Wpf.Ui.Controls;
 
 namespace BreakTimeApp.Models
@@ -60,12 +61,14 @@ namespace BreakTimeApp.Models
             _timer.Tick += toast_ElapsedEventHandler;
         }
 
+        [LogAspect]
         private void timer_Tick(object? sender, EventArgs e)
         {
             double progressUnit = 100 / Span.TotalSeconds;
             Progress += progressUnit;
         }
 
+        [LogAspect]
         private void toast_ElapsedEventHandler(object? sender, EventArgs e)
         {
             if (!IsRunning)
@@ -74,12 +77,14 @@ namespace BreakTimeApp.Models
             }
         }
 
+        [LogAspect]
         internal void StartTimer()
         {
             if (!IsRunning)
                 _timer.Start();
         }
 
+        [LogAspect]
         internal void StopTimer()
         {
             if (IsRunning)

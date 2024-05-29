@@ -1,3 +1,4 @@
+using BreakTimeApp.Helpers;
 using Wpf.Ui;
 
 namespace BreakTimeApp.Services
@@ -20,6 +21,7 @@ namespace BreakTimeApp.Services
             _serviceProvider = serviceProvider;
         }
 
+        [LogAspect]
         /// <inheritdoc />
         public T? GetPage<T>()
             where T : class
@@ -30,6 +32,7 @@ namespace BreakTimeApp.Services
             return (T?)_serviceProvider.GetService(typeof(T));
         }
 
+        [LogAspect]
         /// <inheritdoc />
         public FrameworkElement? GetPage(Type pageType)
         {

@@ -1,3 +1,4 @@
+using BreakTimeApp.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BreakTimeApp.Services;
@@ -11,6 +12,7 @@ public class WindowsProviderService
         _serviceProvider = serviceProvider;
     }
 
+    [LogAspect]
     public T GetWindow<T>()
         where T : class
     {
@@ -26,6 +28,7 @@ public class WindowsProviderService
         return windowInstance;
     }
 
+    [LogAspect]
     public void ShowDialog<T>()
         where T : class
     {
@@ -41,6 +44,7 @@ public class WindowsProviderService
         windowInstance.ShowDialog();
     }
 
+    [LogAspect]
     public void Show<T>()
         where T : class
     {

@@ -1,4 +1,5 @@
-﻿using Wpf.Ui.Appearance;
+﻿using BreakTimeApp.Helpers;
+using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
 namespace BreakTimeApp.ViewModels.Pages
@@ -13,14 +14,17 @@ namespace BreakTimeApp.ViewModels.Pages
         [ObservableProperty]
         private ApplicationTheme _currentTheme = ApplicationTheme.Unknown;
 
+        [LogAspect]
         public void OnNavigatedTo()
         {
             if (!_isInitialized)
                 InitializeViewModel();
         }
 
+        [LogAspect]
         public void OnNavigatedFrom() { }
 
+        [LogAspect]
         private void InitializeViewModel()
         {
             CurrentTheme = ApplicationThemeManager.GetAppTheme();
@@ -29,12 +33,14 @@ namespace BreakTimeApp.ViewModels.Pages
             _isInitialized = true;
         }
 
+        [LogAspect]
         private string GetAssemblyVersion()
         {
             return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString()
                 ?? String.Empty;
         }
 
+        [LogAspect]
         [RelayCommand]
         private void OnChangeTheme(string parameter)
         {
@@ -59,6 +65,8 @@ namespace BreakTimeApp.ViewModels.Pages
                     break;
             }
         }
+
+        [LogAspect]
         private T GetResource<T>(string key)
         {
             return (T)Application.Current.Resources[key];

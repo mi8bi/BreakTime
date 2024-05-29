@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using BreakTimeApp.Helpers;
+using System.Collections.ObjectModel;
 using Wpf.Ui.Controls;
 
 namespace BreakTimeApp.ViewModels.Windows
@@ -49,6 +50,7 @@ namespace BreakTimeApp.ViewModels.Windows
 
         }
 
+        [LogAspect]
         private T GetResource<T>(string key)
         {
             return (T)Application.Current.Resources[key];

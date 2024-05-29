@@ -1,4 +1,5 @@
-﻿using BreakTimeApp.Views.Pages;
+﻿using BreakTimeApp.Helpers;
+using BreakTimeApp.Views.Pages;
 using BreakTimeApp.Views.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +25,7 @@ namespace BreakTimeApp.Services
         /// Triggered when the application host is ready to start the service.
         /// </summary>
         /// <param name="cancellationToken">Indicates that the start process has been aborted.</param>
+        [LogAspect]
         public async Task StartAsync(CancellationToken cancellationToken)
         {
             await HandleActivationAsync();
@@ -33,6 +35,7 @@ namespace BreakTimeApp.Services
         /// Triggered when the application host is performing a graceful shutdown.
         /// </summary>
         /// <param name="cancellationToken">Indicates that the shutdown process should no longer be graceful.</param>
+        [LogAspect]
         public async Task StopAsync(CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
@@ -41,6 +44,7 @@ namespace BreakTimeApp.Services
         /// <summary>
         /// Creates main window during activation.
         /// </summary>
+        [LogAspect]
         private async Task HandleActivationAsync()
         {
             if (!Application.Current.Windows.OfType<MainWindow>().Any())

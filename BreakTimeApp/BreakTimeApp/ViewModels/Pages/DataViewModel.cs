@@ -1,4 +1,5 @@
-﻿using BreakTimeApp.Models;
+﻿using BreakTimeApp.Helpers;
+using BreakTimeApp.Models;
 using System.Windows.Media;
 using Wpf.Ui.Controls;
 
@@ -11,14 +12,17 @@ namespace BreakTimeApp.ViewModels.Pages
         [ObservableProperty]
         private IEnumerable<DataColor> _colors;
 
+        [LogAspect]
         public void OnNavigatedTo()
         {
             if (!_isInitialized)
                 InitializeViewModel();
         }
 
+        [LogAspect]
         public void OnNavigatedFrom() { }
 
+        [LogAspect]
         private void InitializeViewModel()
         {
             var random = new Random();
