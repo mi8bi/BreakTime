@@ -33,7 +33,6 @@ namespace BreakTimeApp
                 var environment = hostingContext.HostingEnvironment.EnvironmentName;
                 config.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location));
                 config
-                //.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
             })
@@ -74,6 +73,8 @@ namespace BreakTimeApp
                 // ロギングの設定
                 // 既定のロガーを削除
                 logging.ClearProviders();
+                // 「デバッグ」にログ出力されるように設定
+                logging.AddDebug();
 
                 // NLogの追加
                 logging.SetMinimumLevel(LogLevel.Trace);

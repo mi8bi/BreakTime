@@ -11,7 +11,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Include="appsettings.json">
+		<Content Include="appsettings.Development.json">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 		<Content Include="wpfui-icon.ico" />
@@ -28,7 +28,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="appsettings.json" />
+		<None Remove="appsettings.Development.json" />
 		<None Remove="Assets\wpfui-icon-256.png" />
 		<None Remove="Assets\wpfui-icon-1024.png" />
 	</ItemGroup>
