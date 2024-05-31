@@ -1,5 +1,4 @@
-﻿using BreakTimeApp.Helpers;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Wpf.Ui.Controls;
 
 namespace BreakTimeApp.ViewModels.Windows
@@ -20,19 +19,19 @@ namespace BreakTimeApp.ViewModels.Windows
 
         public MainWindowViewModel()
         {
-            ApplicationTitle = GetResource<string>("main_window_title");
-            SearchText = GetResource<string>("main_window_search");
+            ApplicationTitle = Properties.MainWindowResources.title;
+            SearchText = Properties.MainWindowResources.search;
             MenuItems = new ObservableCollection<object>
             {
                 new NavigationViewItem()
                 {
-                    Content = GetResource<string>("main_window_notify"),
+                    Content = Properties.MainWindowResources.notify,
                     Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
                     TargetPageType = typeof(Views.Pages.NotifyPage)
                 },
                 new NavigationViewItem()
                 {
-                    Content = GetResource<string>("main_window_data"),
+                    Content = Properties.MainWindowResources.data,
                     Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
                     TargetPageType = typeof(Views.Pages.DataPage)
                 },
@@ -42,7 +41,7 @@ namespace BreakTimeApp.ViewModels.Windows
             {
                 new NavigationViewItem()
                 {
-                    Content = GetResource<string>("main_window_settings"),
+                    Content = Properties.MainWindowResources.settings,
                     Icon = new SymbolIcon { Symbol = SymbolRegular.Settings24 },
                     TargetPageType = typeof(Views.Pages.SettingsPage)
                 }
@@ -50,10 +49,5 @@ namespace BreakTimeApp.ViewModels.Windows
 
         }
 
-        [LogAspect]
-        private T GetResource<T>(string key)
-        {
-            return (T)Application.Current.Resources[key];
-        }
     }
 }

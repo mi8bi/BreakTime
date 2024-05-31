@@ -47,7 +47,7 @@ namespace BreakTimeApp.ViewModels.Pages
             // 新しいアイテムを追加
             Items.Add(new TimeStoreItem
             {
-                Guid = Guid.NewGuid(),
+                ID = Guid.NewGuid(),
                 Start = DateTime.Now,
                 End = DateTime.Now + DEFAULT_TIMESPAN,
                 Span = DEFAULT_TIMESPAN,

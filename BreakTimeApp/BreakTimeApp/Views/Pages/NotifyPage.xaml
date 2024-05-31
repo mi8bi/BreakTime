@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:BreakTimeApp.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:properties="clr-namespace:BreakTimeApp.Properties"
     Title="NotifyPage"
     d:DataContext="{d:DesignInstance local:NotifyPage,
                                      IsDesignTimeCreatable=False}"
@@ -51,7 +52,7 @@
                                 <TextBlock
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
-                                    Text="{DynamicResource notify_page_item_title}" />
+                                    Text="{x:Static properties:NotifyPageResources.item_title}" />
                                 <StackPanel
                                     Height="40"
                                     Margin="5"

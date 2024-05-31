@@ -28,7 +28,7 @@ namespace BreakTimeApp.ViewModels.Pages
         private void InitializeViewModel()
         {
             CurrentTheme = ApplicationThemeManager.GetAppTheme();
-            AppVersion = $"{GetResource<string>("app_name")} - {GetAssemblyVersion()}";
+            AppVersion = $"{Properties.AppInfoResources.app_name} - {GetAssemblyVersion()}";
 
             _isInitialized = true;
         }

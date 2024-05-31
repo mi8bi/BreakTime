@@ -12,6 +12,7 @@
     MinHeight="200"
     MaxWidth="700"
     MaxHeight="200"
+    xmlns:properties="clr-namespace:BreakTimeApp.Properties"
     d:DataContext="{d:DesignInstance local:NotifyDetailsWindow,
                                      IsDesignTimeCreatable=False}"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
@@ -31,11 +32,11 @@
         </Grid.RowDefinitions>
 
         <ui:TitleBar
-            Title="{DynamicResource notify_details_title}"
+            Title="{x:Static properties:NotifyDetailsWindowResources.title}"
             Grid.Row="0"
             CanMaximize="False">
             <ui:TitleBar.Icon>
-                <ui:ImageIcon Source="pack://application:,,,/Assets/wpfui-icon-256.png" />
+                <ui:ImageIcon Source="pack://application:,,,/Assets/Images/wpfui-icon-256.png" />
             </ui:TitleBar.Icon>
         </ui:TitleBar>
 
@@ -47,7 +48,7 @@
                 VerticalAlignment="Center"
                 DockPanel.Dock="Left"
                 FontSize="16"
-                Text="{DynamicResource notify_details_window_notify_lbl}" />
+                Text="{x:Static properties:NotifyDetailsWindowResources.notify_lbl}" />
             <StackPanel
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
@@ -60,7 +61,7 @@
                 <Label
                     Margin="8"
                     VerticalAlignment="Center"
-                    Content="{DynamicResource notify_details_window_hour_lbl}" />
+                    Content="{x:Static properties:NotifyDetailsWindowResources.hour_lbl}" />
                 <ComboBox
                     Margin="8"
                     ItemsSource="{Binding ViewModel.Minutes}"
@@ -68,7 +69,7 @@
                 <Label
                     Margin="8"
                     VerticalAlignment="Center"
-                    Content="{DynamicResource notify_details_window_minutes_lbl}" />
+                    Content="{x:Static properties:NotifyDetailsWindowResources.minutes_lbl}" />
                 <ComboBox
                     Margin="8"
                     ItemsSource="{Binding ViewModel.Seconds}"
@@ -76,7 +77,7 @@
                 <Label
                     Margin="8,0,16,0"
                     VerticalAlignment="Center"
-                    Content="{DynamicResource notify_details_window_seconds_lbl}" />
+                    Content="{x:Static properties:NotifyDetailsWindowResources.seconds_lbl}" />
             </StackPanel>
         </DockPanel>
 
@@ -91,7 +92,7 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Command="{Binding ViewModel.ChangeItemCommand}"
-            Content="{DynamicResource notify_details_window_btn}"
+            Content="{x:Static properties:NotifyDetailsWindowResources.btn}"
             DockPanel.Dock="Right" />
     </Grid>
 </ui:FluentWindow>
