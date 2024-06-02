@@ -61,7 +61,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   決定 に類似しているローカライズされた文字列を検索します。
+        ///   Confirm に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string btn {
             get {
@@ -70,7 +70,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   データ に類似しているローカライズされた文字列を検索します。
+        ///   Data に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string data {
             get {
@@ -79,7 +79,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   時 に類似しているローカライズされた文字列を検索します。
+        ///   hour に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string hour_lbl {
             get {
@@ -88,7 +88,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   分 に類似しているローカライズされた文字列を検索します。
+        ///   minutes に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string minutes_lbl {
             get {
@@ -97,7 +97,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   通知 に類似しているローカライズされた文字列を検索します。
+        ///   Notify に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string notify {
             get {
@@ -106,7 +106,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   通知間隔 に類似しているローカライズされた文字列を検索します。
+        ///   Notification interval に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string notify_lbl {
             get {
@@ -115,7 +115,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   検索 に類似しているローカライズされた文字列を検索します。
+        ///   Search に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string search {
             get {
@@ -124,7 +124,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   設定 に類似しているローカライズされた文字列を検索します。
+        ///   Settings に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string settings {
             get {

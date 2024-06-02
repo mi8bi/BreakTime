@@ -22,24 +22,24 @@ namespace BreakTimeApp.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class NotifyDetailsWindowResources_en_US {
+    public class NotifyDetailsWindowResources_ja_JP {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal NotifyDetailsWindowResources_en_US() {
+        internal NotifyDetailsWindowResources_ja_JP() {
         }
         
         /// <summary>
         ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BreakTimeApp.Properties.NotifyDetailsWindowResources - コピー", typeof(NotifyDetailsWindowResources_en_US).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BreakTimeApp.Properties.NotifyDetailsWindowResources", typeof(NotifyDetailsWindowResources_ja_JP).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace BreakTimeApp.Properties {
         ///   現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,27 +61,18 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   決定 に類似しているローカライズされた文字列を検索します。
+        ///   設定 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string btn {
+        public static string btn {
             get {
                 return ResourceManager.GetString("btn", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   データ に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string data {
-            get {
-                return ResourceManager.GetString("data", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   時 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string hour_lbl {
+        public static string hour_lbl {
             get {
                 return ResourceManager.GetString("hour_lbl", resourceCulture);
             }
@@ -90,52 +81,34 @@ namespace BreakTimeApp.Properties {
         /// <summary>
         ///   分 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string minutes_lbl {
+        public static string minutes_lbl {
             get {
                 return ResourceManager.GetString("minutes_lbl", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   通知 に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string notify {
-            get {
-                return ResourceManager.GetString("notify", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   通知間隔 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string notify_lbl {
+        public static string notify_lbl {
             get {
                 return ResourceManager.GetString("notify_lbl", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   検索 に類似しているローカライズされた文字列を検索します。
+        ///   秒 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string search {
+        public static string seconds_lbl {
             get {
-                return ResourceManager.GetString("search", resourceCulture);
+                return ResourceManager.GetString("seconds_lbl", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   設定 に類似しているローカライズされた文字列を検索します。
+        ///   詳細設定 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string settings {
-            get {
-                return ResourceManager.GetString("settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   WPF UI - 通知アイコン に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string title {
+        public static string title {
             get {
                 return ResourceManager.GetString("title", resourceCulture);
             }

@@ -61,7 +61,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   設定 に類似しているローカライズされた文字列を検索します。
+        ///   Confirm に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string btn {
             get {
@@ -70,7 +70,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   時 に類似しているローカライズされた文字列を検索します。
+        ///   hour に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string hour_lbl {
             get {
@@ -79,7 +79,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   分 に類似しているローカライズされた文字列を検索します。
+        ///   minutes に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string minutes_lbl {
             get {
@@ -88,7 +88,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   通知間隔 に類似しているローカライズされた文字列を検索します。
+        ///   Notification interval に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string notify_lbl {
             get {
@@ -97,7 +97,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   秒 に類似しているローカライズされた文字列を検索します。
+        ///   seconds に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string seconds_lbl {
             get {
@@ -106,7 +106,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   詳細設定 に類似しているローカライズされた文字列を検索します。
+        ///   details に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string title {
             get {

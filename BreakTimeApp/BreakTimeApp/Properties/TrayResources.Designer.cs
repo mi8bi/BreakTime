@@ -61,7 +61,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   トレイ1 に類似しているローカライズされた文字列を検索します。
+        ///   TrayHome に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string TrayHome {
             get {

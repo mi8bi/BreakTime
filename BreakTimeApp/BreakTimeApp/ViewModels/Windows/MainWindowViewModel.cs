@@ -26,7 +26,7 @@ namespace BreakTimeApp.ViewModels.Windows
                 new NavigationViewItem()
                 {
                     Content = Properties.MainWindowResources.notify,
-                    Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
+                    Icon = new SymbolIcon { Symbol = SymbolRegular.ClockAlarm24 },
                     TargetPageType = typeof(Views.Pages.NotifyPage)
                 },
                 new NavigationViewItem()

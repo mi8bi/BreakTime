@@ -36,6 +36,11 @@ namespace BreakTimeApp.Models
         [ObservableProperty]
         private double _maxProgress;
 
+        /**
+         * <summary>
+         * 破棄されたことをイベント通知
+         * </summary>
+         */
         public event EventHandler Disposed;
 
         public TimeStoreItem()

@@ -69,6 +69,7 @@ namespace BreakTimeApp.ViewModels.Pages
                 Progress = 0,
                 MaxProgress = DEFAULT_TIMESPAN.TotalSeconds
             };
+            // 破棄イベントの処理内容を登録
             newItem.Disposed += TimeStoreItem_Disposed;
             Items.Add(newItem);
 

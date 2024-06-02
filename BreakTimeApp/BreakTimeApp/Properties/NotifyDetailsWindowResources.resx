@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btn" xml:space="preserve">
-    <value>設定</value>
+    <value>Confirm</value>
   </data>
   <data name="hour_lbl" xml:space="preserve">
-    <value>時</value>
+    <value>hour</value>
   </data>
   <data name="minutes_lbl" xml:space="preserve">
-    <value>分</value>
+    <value>minutes</value>
   </data>
   <data name="notify_lbl" xml:space="preserve">
-    <value>通知間隔</value>
+    <value>Notification interval</value>
   </data>
   <data name="seconds_lbl" xml:space="preserve">
-    <value>秒</value>
+    <value>seconds</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>詳細設定</value>
+    <value>details</value>
   </data>
 </root>

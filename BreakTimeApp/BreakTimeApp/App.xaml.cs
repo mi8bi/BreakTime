@@ -100,11 +100,6 @@ namespace BreakTimeApp
         [LogAspect]
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            // アプリケーションのカルチャを設定
-            //CultureInfo culture = new CultureInfo("en-US");
-            //Thread.CurrentThread.CurrentCulture = culture;
-            //Thread.CurrentThread.CurrentUICulture = culture;
-
             _host.Start();
 
             // トースト通知がアクティブ化されたときに呼び出されるイベントハンドラを設定
@@ -113,7 +108,7 @@ namespace BreakTimeApp
                 // トースト通知のアクティブ化の詳細を取得
                 ToastArguments args = ToastArguments.Parse(toastArgs.Argument);
 
-                Current.Dispatcher.Invoke(() =>
+                Application.Current.Dispatcher.Invoke(() =>
                 {
                     // トースト通知がアクティブ化されたときの処理
                     string action = args["action"];

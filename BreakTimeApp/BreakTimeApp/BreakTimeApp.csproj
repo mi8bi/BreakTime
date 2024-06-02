@@ -58,28 +58,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Properties\AppInfoResources.en-US.Designer.cs">
+	  <Compile Update="Properties\AppInfoResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>AppInfoResources.en-US.resx</DependentUpon>
+	    <DependentUpon>AppInfoResources.resx</DependentUpon>
 	  </Compile>
 	  <Compile Update="Properties\DbResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
 	    <DependentUpon>DbResources.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Properties\TrayResources.en-US.Designer.cs">
-	    <DependentUpon>TrayResources.en-US.resx</DependentUpon>
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\DbResources.ja-JP.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>DbResources.ja-JP.resx</DependentUpon>
 	  </Compile>
 	  <Compile Update="Properties\TrayResources.Designer.cs">
 	    <DependentUpon>TrayResources.resx</DependentUpon>
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	  </Compile>
-	  <Compile Update="Properties\NotifyPageResources.en-US.Designer.cs">
-	    <DependentUpon>NotifyPageResources.en-US.resx</DependentUpon>
+	  <Compile Update="Properties\TrayResources.ja-JP.Designer.cs">
+	    <DependentUpon>TrayResources.ja-JP.resx</DependentUpon>
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	  </Compile>
@@ -88,8 +88,8 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	  </Compile>
-	  <Compile Update="Properties\NotifyDetailsWindowResources.en-US.Designer.cs">
-	    <DependentUpon>NotifyDetailsWindowResources.en-US.resx</DependentUpon>
+	  <Compile Update="Properties\NotifyPageResources.ja-JP.Designer.cs">
+	    <DependentUpon>NotifyPageResources.ja-JP.resx</DependentUpon>
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	  </Compile>
@@ -98,8 +98,8 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	  </Compile>
-	  <Compile Update="Properties\MainWindowResources.en-US.Designer.cs">
-	    <DependentUpon>MainWindowResources.en-US.resx</DependentUpon>
+	  <Compile Update="Properties\NotifyDetailsWindowResources.ja-JP.Designer.cs">
+	    <DependentUpon>NotifyDetailsWindowResources.ja-JP.resx</DependentUpon>
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	  </Compile>
@@ -108,57 +108,66 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	  </Compile>
-	  <Compile Update="Properties\AppInfoResources.Designer.cs">
+	  <Compile Update="Properties\MainWindowResources.ja-JP.Designer.cs">
+	    <DependentUpon>MainWindowResources.ja-JP.resx</DependentUpon>
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>AppInfoResources.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Properties\AppInfoResources.ja-JP.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>AppInfoResources.ja-JP.resx</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Properties\AppInfoResources.en-US.resx">
+	  <EmbeddedResource Update="Properties\AppInfoResources.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>AppInfoResources.en-US.Designer.cs</LastGenOutput>
+	    <LastGenOutput>AppInfoResources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Properties\DbResources.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>DbResources.Designer.cs</LastGenOutput>
+	    <Generator>ResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Properties\TrayResources.en-US.resx">
-	    <LastGenOutput>TrayResources.en-US.Designer.cs</LastGenOutput>
-	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  <EmbeddedResource Update="Properties\DbResources.ja-JP.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>DbResources.ja-JP.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Properties\TrayResources.resx">
 	    <LastGenOutput>TrayResources.Designer.cs</LastGenOutput>
 	    <Generator>PublicResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Properties\NotifyPageResources.en-US.resx">
-	    <LastGenOutput>NotifyPageResources.en-US.Designer.cs</LastGenOutput>
+	  <EmbeddedResource Update="Properties\TrayResources.ja-JP.resx">
+	    <LastGenOutput>TrayResources.ja-JP.Designer.cs</LastGenOutput>
 	    <Generator>PublicResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Properties\NotifyPageResources.resx">
 	    <LastGenOutput>NotifyPageResources.Designer.cs</LastGenOutput>
 	    <Generator>PublicResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Properties\NotifyDetailsWindowResources.en-US.resx">
-	    <LastGenOutput>NotifyDetailsWindowResources.en-US.Designer.cs</LastGenOutput>
+	  <EmbeddedResource Update="Properties\NotifyPageResources.ja-JP.resx">
+	    <LastGenOutput>NotifyPageResources.ja-JP.Designer.cs</LastGenOutput>
 	    <Generator>PublicResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Properties\NotifyDetailsWindowResources.resx">
 	    <LastGenOutput>NotifyDetailsWindowResources.Designer.cs</LastGenOutput>
 	    <Generator>PublicResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Properties\MainWindowResources.en-US.resx">
-	    <LastGenOutput>MainWindowResources.en-US.Designer.cs</LastGenOutput>
-	    <Generator>ResXFileCodeGenerator</Generator>
+	  <EmbeddedResource Update="Properties\NotifyDetailsWindowResources.ja-JP.resx">
+	    <LastGenOutput>NotifyDetailsWindowResources.ja-JP.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Properties\MainWindowResources.resx">
 	    <LastGenOutput>MainWindowResources.Designer.cs</LastGenOutput>
 	    <Generator>ResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Properties\AppInfoResources.resx">
+	  <EmbeddedResource Update="Properties\MainWindowResources.ja-JP.resx">
+	    <LastGenOutput>MainWindowResources.ja-JP.Designer.cs</LastGenOutput>
 	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>AppInfoResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\AppInfoResources.ja-JP.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>AppInfoResources.ja-JP.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 	</ItemGroup>
 

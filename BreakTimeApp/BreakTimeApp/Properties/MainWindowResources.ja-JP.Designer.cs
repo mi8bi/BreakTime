@@ -22,14 +22,14 @@ namespace BreakTimeApp.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class TrayResources_en_US {
+    internal class MainWindowResources_ja_JP {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal TrayResources_en_US() {
+        internal MainWindowResources_ja_JP() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace BreakTimeApp.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BreakTimeApp.Properties.TrayResources - コピー", typeof(TrayResources_en_US).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BreakTimeApp.Properties.MainWindowResources", typeof(MainWindowResources_ja_JP).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,83 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   トレイ1 に類似しているローカライズされた文字列を検索します。
+        ///   決定 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string TrayHome {
+        internal static string btn {
             get {
-                return ResourceManager.GetString("TrayHome", resourceCulture);
+                return ResourceManager.GetString("btn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   データ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string data {
+            get {
+                return ResourceManager.GetString("data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   時 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string hour_lbl {
+            get {
+                return ResourceManager.GetString("hour_lbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   分 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string minutes_lbl {
+            get {
+                return ResourceManager.GetString("minutes_lbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   通知 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string notify {
+            get {
+                return ResourceManager.GetString("notify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   通知間隔 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string notify_lbl {
+            get {
+                return ResourceManager.GetString("notify_lbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   検索 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string search {
+            get {
+                return ResourceManager.GetString("search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   設定 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string settings {
+            get {
+                return ResourceManager.GetString("settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   BreakTimeApp に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string title {
+            get {
+                return ResourceManager.GetString("title", resourceCulture);
             }
         }
     }

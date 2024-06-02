@@ -22,14 +22,14 @@ namespace BreakTimeApp.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class NotifyPageResources_en_US {
+    internal class AppInfoResources_ja_JP {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal NotifyPageResources_en_US() {
+        internal AppInfoResources_ja_JP() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace BreakTimeApp.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BreakTimeApp.Properties.NotifyPageResources - コピー", typeof(NotifyPageResources_en_US).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BreakTimeApp.Properties.AppInfoResources", typeof(AppInfoResources_ja_JP).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,11 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   Notify Timer に類似しているローカライズされた文字列を検索します。
+        ///   BreakTimeApp に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string item_title {
+        internal static string app_name {
             get {
-                return ResourceManager.GetString("item_title", resourceCulture);
+                return ResourceManager.GetString("app_name", resourceCulture);
             }
         }
     }

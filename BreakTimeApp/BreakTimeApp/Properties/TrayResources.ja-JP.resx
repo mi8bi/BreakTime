@@ -117,22 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btn" xml:space="preserve">
-    <value>Confirm</value>
-  </data>
-  <data name="hour_lbl" xml:space="preserve">
-    <value>hour</value>
-  </data>
-  <data name="minutes_lbl" xml:space="preserve">
-    <value>minutes</value>
-  </data>
-  <data name="notify_lbl" xml:space="preserve">
-    <value>Notification interval</value>
-  </data>
-  <data name="seconds_lbl" xml:space="preserve">
-    <value>seconds</value>
-  </data>
-  <data name="title" xml:space="preserve">
-    <value>details</value>
+  <data name="TrayHome" xml:space="preserve">
+    <value>トレイ1</value>
   </data>
 </root>

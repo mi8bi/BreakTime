@@ -22,14 +22,14 @@ namespace BreakTimeApp.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class NotifyPageResources {
+    public class TrayResources_ja_JP {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal NotifyPageResources() {
+        internal TrayResources_ja_JP() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace BreakTimeApp.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BreakTimeApp.Properties.NotifyPageResources", typeof(NotifyPageResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BreakTimeApp.Properties.TrayResources", typeof(TrayResources_ja_JP).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,11 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   Notify Timer に類似しているローカライズされた文字列を検索します。
+        ///   トレイ1 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string item_title {
+        public static string TrayHome {
             get {
-                return ResourceManager.GetString("item_title", resourceCulture);
+                return ResourceManager.GetString("TrayHome", resourceCulture);
             }
         }
     }
