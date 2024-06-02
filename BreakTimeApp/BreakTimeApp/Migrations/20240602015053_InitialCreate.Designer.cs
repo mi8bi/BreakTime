@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BreakTimeApp.Migrations
 {
     [DbContext(typeof(TimeStoreItemDbContext))]
-    [Migration("20240602004231_InitialCreate")]
+    [Migration("20240602015053_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -28,24 +28,19 @@ namespace BreakTimeApp.Migrations
                     b.Property<string>("ID")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("End")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Icon")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsRunning")
                         .HasColumnType("INTEGER");
 
+                    b.Property<double>("MaxProgress")
+                        .HasColumnType("REAL");
+
                     b.Property<double>("Progress")
                         .HasColumnType("REAL");
 
                     b.Property<string>("Span")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Start")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

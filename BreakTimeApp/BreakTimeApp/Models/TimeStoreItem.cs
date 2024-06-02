@@ -17,44 +17,12 @@ namespace BreakTimeApp.Models
          */
         private static readonly double INTERVAL = 1;
 
-        /**
-         * <summary>
-         * 最大時間 (時)
-         * </summary>
-         */
-        public static readonly int MAX_HOUR = 4;
-
-        /**
-         * <summary>
-         * 最大時間 (分)
-         * </summary>
-         */
-        public static readonly int MAX_MINUTES = 60;
-
-        /**
-         * <summary>
-         * 最大時間 (秒)
-         * </summary>
-         */
-        public static readonly int MAX_SECONDS = 60;
-
-        /**
-         * <summary>
-         * プログレスバーの最大値
-         * </summary>
-         */
-        private static readonly int MAX_PROGRESS = 100;
-
         private readonly DispatcherTimer _timer;
 
         public Guid ID { get; set; }
 
-        public DateTime Start { get; set; }
-
-        public TimeSpan Span { get; set; }
-
         [ObservableProperty]
-        private DateTime _end;
+        public TimeSpan _span;
 
         [ObservableProperty]
         private bool _isRunning;
@@ -65,6 +33,11 @@ namespace BreakTimeApp.Models
         [ObservableProperty]
         private double _progress;
 
+        [ObservableProperty]
+        private double _maxProgress;
+
+        public event EventHandler Disposed;
+
         public TimeStoreItem()
         {
             _timer = new DispatcherTimer();
@@ -73,7 +46,7 @@ namespace BreakTimeApp.Models
             _timer.Tick += toast_ElapsedEventHandler;
         }
 
-        partial void OnEndChanged(DateTime value)
+        partial void OnSpanChanged(TimeSpan value)
         {
             _ = UpdateItemInDatabase();
         }
@@ -102,14 +75,16 @@ namespace BreakTimeApp.Models
         [LogAspect]
         private void timer_Tick(object? sender, EventArgs e)
         {
-            double progressUnit = MAX_PROGRESS / Span.TotalSeconds;
-            Progress += progressUnit;
+            // プログレスバーの進捗
+            Progress += INTERVAL;
+            // Spanの表示を1秒減らす
+            Span -= TimeSpan.FromSeconds(INTERVAL);
         }
 
         [LogAspect]
         private void toast_ElapsedEventHandler(object? sender, EventArgs e)
         {
-            if (!IsRunning && Progress > MAX_PROGRESS)
+            if (!IsRunning && Progress >= MaxProgress)
             {
 #if WINDOWS10_0_17763_0_OR_GREATER
                 // Toastを組み立てる
@@ -163,6 +138,8 @@ namespace BreakTimeApp.Models
         {
             _timer.Tick -= timer_Tick;
             _timer.Tick -= toast_ElapsedEventHandler;
+            // 破棄されたことをイベント通知
+            Disposed?.Invoke(this, EventArgs.Empty);
         }
     }
 }

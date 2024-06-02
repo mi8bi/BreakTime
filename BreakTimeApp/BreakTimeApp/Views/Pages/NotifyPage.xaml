@@ -75,15 +75,15 @@
                                         Margin="5,0,0,0"
                                         Foreground="#0085FC"
                                         IsIndeterminate="False"
-                                        Maximum="100"
+                                        Maximum="{Binding MaxProgress}"
                                         Minimum="0"
                                         Value="{Binding Progress}" />
                                     <TextBlock
                                         Margin="10,0,0,0"
                                         VerticalAlignment="Center"
-                                        d:Text="08:23:11"
+                                        d:Text="01:20:11"
                                         FontSize="16"
-                                        Text="{Binding End, StringFormat=HH:mm:ss}" />
+                                        Text="{Binding Span, StringFormat={}{0:hh\\:mm\\:ss}}" />
                                     <ui:Button
                                         Margin="10,0,0,0"
                                         VerticalAlignment="Center"

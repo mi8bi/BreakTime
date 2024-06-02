@@ -9,11 +9,10 @@ namespace BreakTimeApp.Helpers
         {
             TimeStoreItemDb itemDb = new TimeStoreItemDb();
             itemDb.ID = item.ID.ToString();
-            itemDb.Start = item.Start.ToString();
             itemDb.Span = item.Span.ToString();
-            itemDb.End = item.End.ToString();
             itemDb.IsRunning = item.IsRunning;
             itemDb.Progress = item.Progress;
+            itemDb.MaxProgress = item.MaxProgress;
             itemDb.Icon = (int) item.Icon;
 
             return itemDb;
@@ -23,10 +22,10 @@ namespace BreakTimeApp.Helpers
             return new TimeStoreItem()
             {
                 ID = Guid.Parse(itemDb.ID),
-                Start = DateTime.Parse(itemDb.Start),
-                End = DateTime.Parse(itemDb.End),
                 Span = TimeSpan.Parse(itemDb.Span),
                 IsRunning = itemDb.IsRunning,
+                Progress = itemDb.Progress,
+                MaxProgress = itemDb.MaxProgress,
                 Icon = (SymbolRegular) itemDb.Icon,
             };
         }

@@ -16,8 +16,8 @@ namespace BreakTimeApp.ViewModels.Pages
         private readonly ITimeStoreItemDataService _dataService;
         private readonly WindowsProviderService _windowsProviderService;
 
-        //「1時間後」を表すTimeSpanオブジェクトを作成
-        private readonly TimeSpan DEFAULT_TIMESPAN = new TimeSpan(1, 0, 0);
+        //「1分後」を表すTimeSpanオブジェクトを作成
+        private readonly TimeSpan DEFAULT_TIMESPAN = new TimeSpan(0, 1, 0);
 
         [ObservableProperty]
         private ObservableCollection<TimeStoreItem> _items;
@@ -38,11 +38,13 @@ namespace BreakTimeApp.ViewModels.Pages
         [LogAspect]
         private async Task LoadItemsAsync()
         {
-            var items = await _dataService.GetAllTimeStoreItemsAsync();
+            var itemsDb = await _dataService.GetAllTimeStoreItemsAsync();
             Items = new ObservableCollection<TimeStoreItem>();
-            foreach (var item in items)
+            foreach (var itemDb in itemsDb)
             {
-                Items.Add(TimeStoreItemToDbConverter.ConvertBack(item));
+                TimeStoreItem item = TimeStoreItemToDbConverter.ConvertBack(itemDb);
+                item.Disposed += TimeStoreItem_Disposed;
+                Items.Add(item);
             }
             _logger.LogInformation(AppLogEvents.UserAction, "items loaded");
         }
@@ -61,12 +63,13 @@ namespace BreakTimeApp.ViewModels.Pages
             TimeStoreItem newItem = new TimeStoreItem
             {
                 ID = Guid.NewGuid(),
-                Start = DateTime.Now,
-                End = DateTime.Now + DEFAULT_TIMESPAN,
                 Span = DEFAULT_TIMESPAN,
                 IsRunning = true,
-                Icon = SymbolRegular.TriangleRight20
+                Icon = SymbolRegular.TriangleRight20,
+                Progress = 0,
+                MaxProgress = DEFAULT_TIMESPAN.TotalSeconds
             };
+            newItem.Disposed += TimeStoreItem_Disposed;
             Items.Add(newItem);
 
             await _dataService.AddTimeStoreItemAsync(TimeStoreItemToDbConverter.Convert(newItem));
@@ -81,6 +84,14 @@ namespace BreakTimeApp.ViewModels.Pages
 
             await _dataService.DeleteTimeStoreItemAsync(item.ID.ToString());
             _logger.LogInformation(AppLogEvents.UserAction, "item remove");
+        }
+
+        private void TimeStoreItem_Disposed(object sender, EventArgs e)
+        {
+            if (sender is TimeStoreItem item)
+            {
+                OnRemoveItem(item);
+            }
         }
 
         [LogAspect]

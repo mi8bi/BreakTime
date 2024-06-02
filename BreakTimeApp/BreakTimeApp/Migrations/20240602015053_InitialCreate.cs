@@ -15,12 +15,11 @@ namespace BreakTimeApp.Migrations
                 columns: table => new
                 {
                     ID = table.Column<string>(type: "TEXT", nullable: false),
-                    Start = table.Column<string>(type: "TEXT", nullable: false),
                     Span = table.Column<string>(type: "TEXT", nullable: false),
-                    End = table.Column<string>(type: "TEXT", nullable: false),
                     IsRunning = table.Column<bool>(type: "INTEGER", nullable: false),
                     Icon = table.Column<int>(type: "INTEGER", nullable: false),
-                    Progress = table.Column<double>(type: "REAL", nullable: false)
+                    Progress = table.Column<double>(type: "REAL", nullable: false),
+                    MaxProgress = table.Column<double>(type: "REAL", nullable: false)
                 },
                 constraints: table =>
                 {
