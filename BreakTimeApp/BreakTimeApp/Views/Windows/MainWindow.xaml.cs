@@ -25,6 +25,27 @@ namespace BreakTimeApp.Views.Windows
             SetPageService(pageService);
 
             navigationService.SetNavigationControl(RootNavigation);
+            // ウィンドウを閉じる処理
+            Closing += MainWindow_Closing;
+        }
+
+        private void MainWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // アプリケーションの終了をキャンセル
+            e.Cancel = true;
+
+            // ウィンドウを非表示にする
+            Hide();
+        }
+
+        protected override void OnStateChanged(EventArgs e)
+        {
+            if (WindowState == WindowState.Minimized)
+            {
+                Hide();
+            }
+
+            base.OnStateChanged(e);
         }
 
         #region INavigationWindow methods
@@ -47,10 +68,7 @@ namespace BreakTimeApp.Views.Windows
         [LogAspect]
         protected override void OnClosed(EventArgs e)
         {
-            base.OnClosed(e);
-
-            // Make sure that closing this window will begin the process of closing the application.
-            Application.Current.Shutdown();
+            // タスクトレイでアプリを終了するため、ここでは何もしない
         }
 
         [LogAspect]
@@ -63,6 +81,13 @@ namespace BreakTimeApp.Views.Windows
         public void SetServiceProvider(IServiceProvider serviceProvider)
         {
             throw new NotImplementedException();
+        }
+
+        private void Exit_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // アプリケーション終了
+            base.OnClosed(e);
+            Application.Current.Shutdown();
         }
     }
 }

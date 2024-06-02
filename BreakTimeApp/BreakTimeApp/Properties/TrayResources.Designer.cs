@@ -61,11 +61,11 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   TrayHome に類似しているローカライズされた文字列を検索します。
+        ///   Exit に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string TrayHome {
+        public static string Exit {
             get {
-                return ResourceManager.GetString("TrayHome", resourceCulture);
+                return ResourceManager.GetString("Exit", resourceCulture);
             }
         }
     }

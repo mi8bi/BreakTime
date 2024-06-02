@@ -86,11 +86,12 @@
             FocusOnLeftClick="True"
             Icon="pack://application:,,,/Assets/Images/wpfui-icon-256.png"
             MenuOnRightClick="True"
-            TooltipText="WPF UI">
+            TooltipText="BreakTimeApp">
             <tray:NotifyIcon.Menu>
                 <ContextMenu>
-                    <MenuItem Header="{x:Static properties:TrayResources.TrayHome}" />
-                    <MenuItem Header="Exit" Tag="tray_exit" />
+                    <MenuItem 
+                        Header="{x:Static properties:TrayResources.Exit}" 
+                        Click="Exit_MenuItem_Click" />
                 </ContextMenu>
             </tray:NotifyIcon.Menu>
         </tray:NotifyIcon>
