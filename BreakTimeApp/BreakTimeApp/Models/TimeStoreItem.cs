@@ -4,6 +4,7 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using System.IO;
 using System.Windows.Threading;
 using Windows.UI.Notifications;
+using Wpf.Ui;
 using Wpf.Ui.Controls;
 
 namespace BreakTimeApp.Models
@@ -56,6 +57,9 @@ namespace BreakTimeApp.Models
 
         partial void OnNameChanged(string? oldValue, string newValue)
         {
+            if (string.IsNullOrWhiteSpace(newValue))
+                Name = oldValue;
+
             _ = UpdateItemInDatabase();
         }
 
