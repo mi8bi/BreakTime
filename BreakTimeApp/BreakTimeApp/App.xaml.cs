@@ -113,12 +113,12 @@ namespace BreakTimeApp
                 // トースト通知のアクティブ化の詳細を取得
                 ToastArguments args = ToastArguments.Parse(toastArgs.Argument);
 
-                Current.Dispatcher.Invoke(delegate
+                Current.Dispatcher.Invoke(() =>
                 {
                     // トースト通知がアクティブ化されたときの処理
                     string action = args["action"];
                     // TODO: GUIDを取得し、EF CoreでTimeStoreItemを取得する?
-                    // string guid = args["guid"];
+                    string guid = args["guid"];
 
                     switch (action)
                     {

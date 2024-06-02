@@ -39,7 +39,7 @@ namespace BreakTimeApp.ViewModels.Windows
             Item.Span = ts;
             Item.End = Item.Start + ts;
 
-            if (Item.End < Item.Start)
+            if (Item.End < DateTime.Now)
             {
                 Item.Start = DateTime.Now;
                 Item.End = DateTime.Now + ts;

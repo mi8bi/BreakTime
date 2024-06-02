@@ -1,4 +1,5 @@
 ﻿using BreakTimeApp.Helpers;
+using BreakTimeApp.Services;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System.IO;
 using System.Windows.Threading;
@@ -72,6 +73,32 @@ namespace BreakTimeApp.Models
             _timer.Tick += toast_ElapsedEventHandler;
         }
 
+        partial void OnEndChanged(DateTime value)
+        {
+            _ = UpdateItemInDatabase();
+        }
+
+        partial void OnIsRunningChanged(bool value)
+        {
+            _ = UpdateItemInDatabase();
+        }
+
+        partial void OnIconChanged(SymbolRegular value)
+        {
+            _ = UpdateItemInDatabase();
+        }
+
+        partial void OnProgressChanged(double value)
+        {
+            _ = UpdateItemInDatabase();
+        }
+
+        private async Task UpdateItemInDatabase()
+        {
+            ITimeStoreItemDataService dataService = new TimeStoreItemDataService(new TimeStoreItemDbContext());
+            await dataService.UpdateTimeStoreItemAsync(TimeStoreItemToDbConverter.Convert(this));
+        }
+
         [LogAspect]
         private void timer_Tick(object? sender, EventArgs e)
         {
@@ -92,20 +119,19 @@ namespace BreakTimeApp.Models
                 string dismissImagePath = Path.Combine(baseDirectory, "Assets/Images/ic_fluent_dismiss_24_filled.png");
                 var toastContent = new ToastContentBuilder()
                     .AddText("New product in stock!")
+                    // TODO: AddArgumentにGuidを渡す
+                    .AddArgument("guid", ID.ToString())
                     .AddButton(new ToastButton()
                         .SetContent("Accept")
                         .AddArgument("action", "accept")
-                        // TODO: AddArgumentにGuidを渡す
                         .SetImageUri(new Uri(acceptImagePath)))
                     .AddButton(new ToastButton()
                         .SetContent("Snooze")
                         .AddArgument("action", "snooze")
-                        // TODO: AddArgumentにGuidを渡す
                         .SetImageUri(new Uri(snoozeImagePath)))
                     .AddButton(new ToastButton()
                         .SetContent("Dismiss")
                         .AddArgument("action", "dismiss")
-                        // TODO: AddArgumentにGuidを渡す
                         .SetImageUri(new Uri(dismissImagePath)))
                     .GetToastContent();
                 // Toastのレイアウトを作成
@@ -132,6 +158,7 @@ namespace BreakTimeApp.Models
                 _timer.Stop();
         }
 
+        [LogAspect]
         public void Dispose()
         {
             _timer.Tick -= timer_Tick;

@@ -13,16 +13,14 @@ namespace BreakTimeApp.ViewModels.Pages
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly ILogger<NotifyViewModel> _logger;
+        private readonly ITimeStoreItemDataService _dataService;
         private readonly WindowsProviderService _windowsProviderService;
 
         //「1時間後」を表すTimeSpanオブジェクトを作成
         private readonly TimeSpan DEFAULT_TIMESPAN = new TimeSpan(1, 0, 0);
 
         [ObservableProperty]
-        private ObservableCollection<TimeStoreItem> _items = new ObservableCollection<TimeStoreItem>();
-
-        [ObservableProperty]
-        private TimeStoreItem _selectedItem;
+        private ObservableCollection<TimeStoreItem> _items;
 
         public NotifyViewModel(
             IServiceProvider serviceProvider,
@@ -31,7 +29,22 @@ namespace BreakTimeApp.ViewModels.Pages
         {
             _serviceProvider = serviceProvider;
             _logger = logger;
+            // Note: TimeStoreItemDataService(及びDbContext)はスコープが違うのでインジェクションができない
+            _dataService = new TimeStoreItemDataService(new TimeStoreItemDbContext());
             _windowsProviderService = windowsProviderService;
+            _ = LoadItemsAsync();
+        }
+
+        [LogAspect]
+        private async Task LoadItemsAsync()
+        {
+            var items = await _dataService.GetAllTimeStoreItemsAsync();
+            Items = new ObservableCollection<TimeStoreItem>();
+            foreach (var item in items)
+            {
+                Items.Add(TimeStoreItemToDbConverter.ConvertBack(item));
+            }
+            _logger.LogInformation(AppLogEvents.UserAction, "items loaded");
         }
 
         [LogAspect]
@@ -42,10 +55,10 @@ namespace BreakTimeApp.ViewModels.Pages
 
         [LogAspect]
         [RelayCommand]
-        private void OnAddItem()
+        private async Task OnAddItem()
         {
             // 新しいアイテムを追加
-            Items.Add(new TimeStoreItem
+            TimeStoreItem newItem = new TimeStoreItem
             {
                 ID = Guid.NewGuid(),
                 Start = DateTime.Now,
@@ -53,16 +66,21 @@ namespace BreakTimeApp.ViewModels.Pages
                 Span = DEFAULT_TIMESPAN,
                 IsRunning = true,
                 Icon = SymbolRegular.TriangleRight20
-            });
+            };
+            Items.Add(newItem);
 
+            await _dataService.AddTimeStoreItemAsync(TimeStoreItemToDbConverter.Convert(newItem));
             _logger.LogInformation(AppLogEvents.UserAction, "item add");
         }
 
         [LogAspect]
         [RelayCommand(CanExecute = nameof(canExecuteItem))]
-        private void OnRemoveItem(TimeStoreItem item)
+        private async Task OnRemoveItem(TimeStoreItem item)
         {
             Items.Remove(item);
+
+            await _dataService.DeleteTimeStoreItemAsync(item.ID.ToString());
+            _logger.LogInformation(AppLogEvents.UserAction, "item remove");
         }
 
         [LogAspect]

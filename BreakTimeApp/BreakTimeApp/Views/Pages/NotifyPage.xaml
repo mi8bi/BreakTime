@@ -32,8 +32,7 @@
             <ui:ListView
                 Name="listView"
                 d:ItemsSource="{d:SampleData ItemCount=4}"
-                ItemsSource="{Binding ViewModel.Items}"
-                SelectedItem="{Binding ViewModel.SelectedItem}">
+                ItemsSource="{Binding ViewModel.Items}">
                 <ui:ListView.ItemContainerStyle>
                     <Style TargetType="ui:ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
