@@ -15,6 +15,7 @@ namespace BreakTimeApp.Migrations
                 columns: table => new
                 {
                     ID = table.Column<string>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
                     Span = table.Column<string>(type: "TEXT", nullable: false),
                     IsRunning = table.Column<bool>(type: "INTEGER", nullable: false),
                     Icon = table.Column<int>(type: "INTEGER", nullable: false),

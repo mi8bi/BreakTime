@@ -15,6 +15,7 @@
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+    ScrollViewer.CanContentScroll="False"
     mc:Ignorable="d">
 
     <Grid>
@@ -48,10 +49,13 @@
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
                                     Symbol="ClockAlarm24" />
-                                <TextBlock
+                                <TextBox
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"
-                                    Text="{x:Static properties:NotifyPageResources.item_title}" />
+                                    MinWidth="200"
+                                    MaxWidth="200"
+                                    Text="{Binding Name}"
+                                    d:Text="通知 1" />
                                 <StackPanel
                                     Height="40"
                                     Margin="5"

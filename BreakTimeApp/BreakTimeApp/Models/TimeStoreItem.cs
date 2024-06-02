@@ -22,6 +22,9 @@ namespace BreakTimeApp.Models
         public Guid ID { get; set; }
 
         [ObservableProperty]
+        public string _name;
+
+        [ObservableProperty]
         public TimeSpan _span;
 
         [ObservableProperty]
@@ -49,6 +52,11 @@ namespace BreakTimeApp.Models
             _timer.Interval = TimeSpan.FromSeconds(INTERVAL);
             _timer.Tick += timer_Tick;
             _timer.Tick += toast_ElapsedEventHandler;
+        }
+
+        partial void OnNameChanged(string? oldValue, string newValue)
+        {
+            _ = UpdateItemInDatabase();
         }
 
         partial void OnSpanChanged(TimeSpan value)

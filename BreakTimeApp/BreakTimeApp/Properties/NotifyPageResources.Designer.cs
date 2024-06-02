@@ -61,7 +61,7 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
-        ///   Notify Timer に類似しているローカライズされた文字列を検索します。
+        ///   Notify に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string item_title {
             get {

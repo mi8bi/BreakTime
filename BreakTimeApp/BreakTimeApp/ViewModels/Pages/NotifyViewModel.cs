@@ -63,6 +63,7 @@ namespace BreakTimeApp.ViewModels.Pages
             TimeStoreItem newItem = new TimeStoreItem
             {
                 ID = Guid.NewGuid(),
+                Name = $"{Properties.NotifyPageResources.item_title} {Items.Count + 1}",
                 Span = DEFAULT_TIMESPAN,
                 IsRunning = true,
                 Icon = SymbolRegular.TriangleRight20,

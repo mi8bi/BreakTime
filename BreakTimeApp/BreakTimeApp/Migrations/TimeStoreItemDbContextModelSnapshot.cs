@@ -34,6 +34,10 @@ namespace BreakTimeApp.Migrations
                     b.Property<double>("MaxProgress")
                         .HasColumnType("REAL");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<double>("Progress")
                         .HasColumnType("REAL");
 

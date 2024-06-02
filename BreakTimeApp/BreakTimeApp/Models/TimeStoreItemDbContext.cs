@@ -23,7 +23,6 @@ namespace BreakTimeApp.Models
                 Directory.CreateDirectory(path);
             var dbPath = Path.Join(path, Properties.DbResources.timeStoreItemsDbName);
             optionsBuilder.UseSqlite($"Data Source={dbPath}");
-            optionsBuilder.UseLazyLoadingProxies();
         }
     }
 }

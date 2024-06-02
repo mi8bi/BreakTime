@@ -7,21 +7,24 @@ namespace BreakTimeApp.Helpers
     {
         internal static TimeStoreItemDb Convert(TimeStoreItem item)
         {
-            TimeStoreItemDb itemDb = new TimeStoreItemDb();
-            itemDb.ID = item.ID.ToString();
-            itemDb.Span = item.Span.ToString();
-            itemDb.IsRunning = item.IsRunning;
-            itemDb.Progress = item.Progress;
-            itemDb.MaxProgress = item.MaxProgress;
-            itemDb.Icon = (int) item.Icon;
-
-            return itemDb;
+            return new TimeStoreItemDb()
+            {
+                ID = item.ID.ToString(),
+                Name = item.Name,
+                Span = item.Span.ToString(),
+                IsRunning = item.IsRunning,
+                Progress = item.Progress,
+                MaxProgress = item.MaxProgress,
+                Icon = (int) item.Icon
+            };
         }
+
         internal static TimeStoreItem ConvertBack(TimeStoreItemDb itemDb)
         {
             return new TimeStoreItem()
             {
                 ID = Guid.Parse(itemDb.ID),
+                Name = itemDb.Name,
                 Span = TimeSpan.Parse(itemDb.Span),
                 IsRunning = itemDb.IsRunning,
                 Progress = itemDb.Progress,
