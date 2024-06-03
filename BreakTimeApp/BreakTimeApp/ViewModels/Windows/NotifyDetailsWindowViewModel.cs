@@ -1,5 +1,6 @@
 ﻿using BreakTimeApp.Helpers;
 using BreakTimeApp.Models;
+using BreakTimeApp.Services;
 
 namespace BreakTimeApp.ViewModels.Windows
 {

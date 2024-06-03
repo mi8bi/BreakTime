@@ -7,7 +7,9 @@ namespace BreakTimeApp.Services
         Task<IEnumerable<TimeStoreItemDb>> GetAllTimeStoreItemsAsync();
         Task<TimeStoreItemDb> GetTimeStoreItemByIdAsync(string id);
         Task AddTimeStoreItemAsync(TimeStoreItemDb item);
+        void AddTimeStoreItem(TimeStoreItemDb item);
         Task UpdateTimeStoreItemAsync(TimeStoreItemDb item);
         Task DeleteTimeStoreItemAsync(string id);
+        void DeleteTimeStoreItem(string id);
     }
 }

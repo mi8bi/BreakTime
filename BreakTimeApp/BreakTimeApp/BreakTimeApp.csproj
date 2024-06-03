@@ -57,6 +57,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="MessageResources.Designer.cs">
+	    <DependentUpon>MessageResources.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
 	  <Compile Update="Properties\AppInfoResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
@@ -71,6 +76,26 @@
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>DbResources.ja-JP.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Properties\MessageResources.ja-JP.Designer.cs">
+	    <DependentUpon>MessageResources.ja-JP.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\MessageResources.Designer.cs">
+	    <DependentUpon>MessageResources.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\ToastResources.ja-JP.Designer.cs">
+	    <DependentUpon>ToastResources.ja-JP.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\ToastResources.Designer.cs">
+	    <DependentUpon>ToastResources.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
 	  </Compile>
 	  <Compile Update="Properties\TrayResources.Designer.cs">
 	    <DependentUpon>TrayResources.resx</DependentUpon>
@@ -120,6 +145,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Update="MessageResources.resx">
+	    <LastGenOutput>MessageResources.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
 	  <EmbeddedResource Update="Properties\AppInfoResources.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>AppInfoResources.Designer.cs</LastGenOutput>
@@ -131,6 +160,22 @@
 	  <EmbeddedResource Update="Properties\DbResources.ja-JP.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	    <LastGenOutput>DbResources.ja-JP.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\MessageResources.ja-JP.resx">
+	    <LastGenOutput>MessageResources.ja-JP.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\MessageResources.resx">
+	    <LastGenOutput>MessageResources.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\ToastResources.ja-JP.resx">
+	    <LastGenOutput>ToastResources.ja-JP.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\ToastResources.resx">
+	    <LastGenOutput>ToastResources.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Properties\TrayResources.resx">
 	    <LastGenOutput>TrayResources.Designer.cs</LastGenOutput>

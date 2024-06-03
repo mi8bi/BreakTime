@@ -1,20 +1,20 @@
 ﻿using BreakTimeApp.Helpers;
+using BreakTimeApp.Models;
 using BreakTimeApp.Services;
 using BreakTimeApp.ViewModels.Pages;
 using BreakTimeApp.ViewModels.Windows;
 using BreakTimeApp.Views.Pages;
 using BreakTimeApp.Views.Windows;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Toolkit.Uwp.Notifications;
 using NLog.Extensions.Logging;
 using System.IO;
 using System.Reflection;
 using System.Windows.Threading;
 using Wpf.Ui;
-using Wpf.Ui.Tray;
 
 namespace BreakTimeApp
 {
@@ -68,6 +68,10 @@ namespace BreakTimeApp
                 services.AddSingleton<DataViewModel>();
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
+
+                // DB
+                services.AddTransient<TimeStoreItem>();
+                services.AddTransient<TimeStoreItemDb>();
             })
             .ConfigureLogging(logging =>
             {
@@ -102,37 +106,6 @@ namespace BreakTimeApp
         private void OnStartup(object sender, StartupEventArgs e)
         {
             _host.Start();
-
-            // トースト通知がアクティブ化されたときに呼び出されるイベントハンドラを設定
-            ToastNotificationManagerCompat.OnActivated += toastArgs =>
-            {
-                // トースト通知のアクティブ化の詳細を取得
-                ToastArguments args = ToastArguments.Parse(toastArgs.Argument);
-
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    // トースト通知がアクティブ化されたときの処理
-                    string action = args["action"];
-                    // TODO: GUIDを取得し、EF CoreでTimeStoreItemを取得する?
-                    string guid = args["guid"];
-
-                    switch (action)
-                    {
-                        case "accept":
-                            MessageBox.Show("Accept button was clicked.");
-                            break;
-                        case "snooze":
-                            MessageBox.Show("Snooze button was clicked.");
-                            break;
-                        case "dismiss":
-                            MessageBox.Show("Dismiss button was clicked.");
-                            break;
-                        default:
-                            MessageBox.Show("Unknown action: " + action);
-                            break;
-                    }
-                });
-            };
         }
 
         /// <summary>

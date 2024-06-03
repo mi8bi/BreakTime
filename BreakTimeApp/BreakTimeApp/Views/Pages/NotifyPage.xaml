@@ -32,6 +32,7 @@
 
             <ui:ListView
                 Name="listView"
+                SelectionMode="Single"
                 d:ItemsSource="{d:SampleData ItemCount=4}"
                 ItemsSource="{Binding ViewModel.Items}">
                 <ui:ListView.ItemContainerStyle>

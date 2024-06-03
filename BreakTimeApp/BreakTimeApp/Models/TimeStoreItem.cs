@@ -4,8 +4,8 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using System.IO;
 using System.Windows.Threading;
 using Windows.UI.Notifications;
-using Wpf.Ui;
 using Wpf.Ui.Controls;
+using MessageBox = System.Windows.MessageBox;
 
 namespace BreakTimeApp.Models
 {
@@ -18,7 +18,7 @@ namespace BreakTimeApp.Models
          */
         private static readonly double INTERVAL = 1;
 
-        private readonly DispatcherTimer _timer;
+        public DispatcherTimer Timer { get; set; }
 
         public Guid ID { get; set; }
 
@@ -49,16 +49,22 @@ namespace BreakTimeApp.Models
 
         public TimeStoreItem()
         {
-            _timer = new DispatcherTimer();
-            _timer.Interval = TimeSpan.FromSeconds(INTERVAL);
-            _timer.Tick += timer_Tick;
-            _timer.Tick += toast_ElapsedEventHandler;
+            Timer = new DispatcherTimer();
+            Timer.Interval = TimeSpan.FromSeconds(INTERVAL);
+            Timer.Tick += Timer_Tick;
+            Timer.Tick += Toast_ElapsedEventHandler;
         }
 
         partial void OnNameChanged(string? oldValue, string newValue)
         {
             if (string.IsNullOrWhiteSpace(newValue))
+            {
                 Name = oldValue;
+                MessageBox.Show(Properties.MessageResources.InputError,
+                    Properties.MessageResources.ErrorTitle,
+                    System.Windows.MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
 
             _ = UpdateItemInDatabase();
         }
@@ -83,6 +89,11 @@ namespace BreakTimeApp.Models
             _ = UpdateItemInDatabase();
         }
 
+        partial void OnMaxProgressChanged(double value)
+        {
+            _ = UpdateItemInDatabase();
+        }
+
         private async Task UpdateItemInDatabase()
         {
             ITimeStoreItemDataService dataService = new TimeStoreItemDataService(new TimeStoreItemDbContext());
@@ -90,7 +101,7 @@ namespace BreakTimeApp.Models
         }
 
         [LogAspect]
-        private void timer_Tick(object? sender, EventArgs e)
+        public void Timer_Tick(object? sender, EventArgs e)
         {
             // プログレスバーの進捗
             Progress += INTERVAL;
@@ -99,7 +110,7 @@ namespace BreakTimeApp.Models
         }
 
         [LogAspect]
-        private void toast_ElapsedEventHandler(object? sender, EventArgs e)
+        public void Toast_ElapsedEventHandler(object? sender, EventArgs e)
         {
             if (!IsRunning && Progress >= MaxProgress)
             {
@@ -110,20 +121,19 @@ namespace BreakTimeApp.Models
                 string snoozeImagePath = Path.Combine(baseDirectory, "Assets/Images/ic_fluent_snooze_24_filled.png");
                 string dismissImagePath = Path.Combine(baseDirectory, "Assets/Images/ic_fluent_dismiss_24_filled.png");
                 var toastContent = new ToastContentBuilder()
-                    .AddText("New product in stock!")
-                    // TODO: AddArgumentにGuidを渡す
-                    .AddArgument("guid", ID.ToString())
+                    .AddText(Name)
+                    .AddArgument(Properties.ToastResources.guid, ID.ToString())
                     .AddButton(new ToastButton()
-                        .SetContent("Accept")
-                        .AddArgument("action", "accept")
+                        .SetContent(Properties.ToastResources.acceptContent)
+                        .AddArgument(Properties.ToastResources.action, Properties.ToastResources.accept)
                         .SetImageUri(new Uri(acceptImagePath)))
                     .AddButton(new ToastButton()
-                        .SetContent("Snooze")
-                        .AddArgument("action", "snooze")
+                        .SetContent(Properties.ToastResources.snoozeContent)
+                        .AddArgument(Properties.ToastResources.action, Properties.ToastResources.snooze)
                         .SetImageUri(new Uri(snoozeImagePath)))
                     .AddButton(new ToastButton()
-                        .SetContent("Dismiss")
-                        .AddArgument("action", "dismiss")
+                        .SetContent(Properties.ToastResources.dismissContent)
+                        .AddArgument(Properties.ToastResources.action, Properties.ToastResources.dismiss)
                         .SetImageUri(new Uri(dismissImagePath)))
                     .GetToastContent();
                 // Toastのレイアウトを作成
@@ -140,21 +150,21 @@ namespace BreakTimeApp.Models
         internal void StartTimer()
         {
             if (!IsRunning)
-                _timer.Start();
+                Timer.Start();
         }
 
         [LogAspect]
         internal void StopTimer()
         {
             if (IsRunning)
-                _timer.Stop();
+                Timer.Stop();
         }
 
         [LogAspect]
         public void Dispose()
         {
-            _timer.Tick -= timer_Tick;
-            _timer.Tick -= toast_ElapsedEventHandler;
+            Timer.Tick -= Timer_Tick;
+            Timer.Tick -= Toast_ElapsedEventHandler;
             // 破棄されたことをイベント通知
             Disposed?.Invoke(this, EventArgs.Empty);
         }

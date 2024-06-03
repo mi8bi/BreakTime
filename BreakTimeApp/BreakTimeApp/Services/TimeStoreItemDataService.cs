@@ -21,6 +21,13 @@ namespace BreakTimeApp.Services
         }
 
         [LogAspect]
+        public void AddTimeStoreItem(TimeStoreItemDb item)
+        {
+            _context.TimeStoreItems.Add(item);
+            _context.SaveChanges();
+        }
+
+        [LogAspect]
         public async Task DeleteTimeStoreItemAsync(string id)
         {
             var item = await _context.TimeStoreItems.FindAsync(id);
@@ -28,6 +35,17 @@ namespace BreakTimeApp.Services
             {
                 _context.TimeStoreItems.Remove(item);
                 await _context.SaveChangesAsync();
+            }
+        }
+
+        [LogAspect]
+        public void DeleteTimeStoreItem(string id)
+        {
+            var item = _context.TimeStoreItems.Find(id);
+            if (item != null)
+            {
+                _context.TimeStoreItems.Remove(item);
+                _context.SaveChangesAsync();
             }
         }
 
@@ -40,7 +58,17 @@ namespace BreakTimeApp.Services
         [LogAspect]
         public async Task<TimeStoreItemDb> GetTimeStoreItemByIdAsync(string id)
         {
-            return await _context.TimeStoreItems.FindAsync(id);
+            var item = await _context.TimeStoreItems.FindAsync(id);
+
+            // Entity Framework Core は、同じエンティティがコンテキストに存在する場合、
+            // 新しくデータベースから取得するのではなく、キャッシュされたエンティティを返すため、
+            // 最新のデータをデータベースから取得するようにする
+            if (item != null)
+            {
+                await _context.Entry(item).ReloadAsync();
+            }
+
+            return item;
         }
 
         [LogAspect]

@@ -7,30 +7,28 @@ namespace BreakTimeApp.Helpers
     {
         internal static TimeStoreItemDb Convert(TimeStoreItem item)
         {
-            return new TimeStoreItemDb()
-            {
-                ID = item.ID.ToString(),
-                Name = item.Name,
-                Span = item.Span.ToString(),
-                IsRunning = item.IsRunning,
-                Progress = item.Progress,
-                MaxProgress = item.MaxProgress,
-                Icon = (int) item.Icon
-            };
+            TimeStoreItemDb itemDb = App.GetService<TimeStoreItemDb>();
+            itemDb.ID = item.ID.ToString();
+            itemDb.Name = item.Name;
+            itemDb.Span = item.Span.ToString();
+            itemDb.IsRunning = item.IsRunning;
+            itemDb.Progress = item.Progress;
+            itemDb.MaxProgress = item.MaxProgress;
+            itemDb.Icon = (int)item.Icon;
+            return itemDb;
         }
 
         internal static TimeStoreItem ConvertBack(TimeStoreItemDb itemDb)
         {
-            return new TimeStoreItem()
-            {
-                ID = Guid.Parse(itemDb.ID),
-                Name = itemDb.Name,
-                Span = TimeSpan.Parse(itemDb.Span),
-                IsRunning = itemDb.IsRunning,
-                Progress = itemDb.Progress,
-                MaxProgress = itemDb.MaxProgress,
-                Icon = (SymbolRegular) itemDb.Icon,
-            };
+            TimeStoreItem item = App.GetService<TimeStoreItem>();
+            item.ID = Guid.Parse(itemDb.ID);
+            item.Name = itemDb.Name;
+            item.Span = TimeSpan.Parse(itemDb.Span);
+            item.IsRunning = itemDb.IsRunning;
+            item.Progress = itemDb.Progress;
+            item.MaxProgress = itemDb.MaxProgress;
+            item.Icon = (SymbolRegular)itemDb.Icon;
+            return item;
         }
     }
 }
