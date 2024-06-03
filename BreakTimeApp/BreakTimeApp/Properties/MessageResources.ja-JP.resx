@@ -123,4 +123,10 @@
   <data name="InputError" xml:space="preserve">
     <value>入力エラー</value>
   </data>
+  <data name="MutexWarning" xml:space="preserve">
+    <value>アプリケーションは既に起動しています。</value>
+  </data>
+  <data name="MutexWarningTitle" xml:space="preserve">
+    <value>警告</value>
+  </data>
 </root>

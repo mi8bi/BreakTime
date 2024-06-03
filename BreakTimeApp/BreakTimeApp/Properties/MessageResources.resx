@@ -123,4 +123,10 @@
   <data name="InputError" xml:space="preserve">
     <value>Input Error</value>
   </data>
+  <data name="MutexWarning" xml:space="preserve">
+    <value>App already exists.</value>
+  </data>
+  <data name="MutexWarningTitle" xml:space="preserve">
+    <value>Warning</value>
+  </data>
 </root>

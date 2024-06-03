@@ -5,6 +5,7 @@ using BreakTimeApp.ViewModels.Pages;
 using BreakTimeApp.ViewModels.Windows;
 using BreakTimeApp.Views.Pages;
 using BreakTimeApp.Views.Windows;
+using prop = BreakTimeApp.Properties;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -87,6 +88,13 @@ namespace BreakTimeApp
             })
             .Build();
 
+        /**
+         * <summary>
+         * 多重起動の制御
+         * </summary>
+         **/
+        private static Mutex _mutex = null;
+
         /// <summary>
         /// Gets registered service.
         /// </summary>
@@ -105,6 +113,21 @@ namespace BreakTimeApp
         [LogAspect]
         private void OnStartup(object sender, StartupEventArgs e)
         {
+            bool createdNew;
+
+            _mutex = new Mutex(true, prop.AppInfoResources.app_name, out createdNew);
+            if (!createdNew)
+            {
+                // 既にインスタンスが実行されている場合は終了する
+                MessageBox.Show(
+                    prop.MessageResources.MutexWarning,
+                    prop.MessageResources.MutexWarningTitle,
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                Shutdown();
+                return;
+            }
+
             _host.Start();
         }
 

@@ -77,5 +77,23 @@ namespace BreakTimeApp.Properties {
                 return ResourceManager.GetString("InputError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   App already exists. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MutexWarning {
+            get {
+                return ResourceManager.GetString("MutexWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Warning に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MutexWarningTitle {
+            get {
+                return ResourceManager.GetString("MutexWarningTitle", resourceCulture);
+            }
+        }
     }
 }
