@@ -65,6 +65,8 @@ namespace BreakTimeApp
                 // Pages
                 services.AddSingleton<NotifyPage>();
                 services.AddSingleton<NotifyViewModel>();
+                services.AddSingleton<SelectNotifyPage>();
+                services.AddSingleton<SelectNotifyViewModel>();
                 services.AddSingleton<DataPage>();
                 services.AddSingleton<DataViewModel>();
                 services.AddSingleton<SettingsPage>();
@@ -73,6 +75,7 @@ namespace BreakTimeApp
                 // DB
                 services.AddTransient<TimeStoreItem>();
                 services.AddTransient<TimeStoreItemDb>();
+                services.AddTransient<SelectNotifyDb>();
             })
             .ConfigureLogging(logging =>
             {

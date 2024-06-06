@@ -138,6 +138,9 @@
   <data name="search" xml:space="preserve">
     <value>検索</value>
   </data>
+  <data name="select_notify" xml:space="preserve">
+    <value>通知選択</value>
+  </data>
   <data name="settings" xml:space="preserve">
     <value>設定</value>
   </data>

@@ -124,6 +124,15 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
+        ///   SelectNotify に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string select_notify {
+            get {
+                return ResourceManager.GetString("select_notify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Settings に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string settings {

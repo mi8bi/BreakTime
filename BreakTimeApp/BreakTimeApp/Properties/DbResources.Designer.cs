@@ -61,6 +61,15 @@ namespace BreakTimeApp.Properties {
         }
         
         /// <summary>
+        ///   selectNotify.db に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string selectNotifyDbName {
+            get {
+                return ResourceManager.GetString("selectNotifyDbName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   timeStoreItems.db に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string timeStoreItemsDbName {

@@ -34,7 +34,7 @@ namespace BreakTimeApp.ViewModels.Pages
             _dataService = new TimeStoreItemDataService(new TimeStoreItemDbContext());
             _windowsProviderService = windowsProviderService;
             _items = new ObservableCollection<TimeStoreItem>();
-            _ = LoadItemsAsync();
+            LoadItemsAsync().Wait();
             ToastEventHandler();
         }
 
