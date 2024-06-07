@@ -61,14 +61,14 @@ namespace BreakTimeApp
                 // 表示するウィンドウの登録
                 services.AddTransient<NotifyDetailsWindow>();
                 services.AddSingleton<NotifyDetailsWindowViewModel>();
+                services.AddTransient<FullScreenWindow>();
+                services.AddSingleton<FullScreenWindowViewModel>();
 
                 // Pages
                 services.AddSingleton<NotifyPage>();
                 services.AddSingleton<NotifyViewModel>();
                 services.AddSingleton<SelectNotifyPage>();
                 services.AddSingleton<SelectNotifyViewModel>();
-                services.AddSingleton<DataPage>();
-                services.AddSingleton<DataViewModel>();
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
 

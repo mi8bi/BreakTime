@@ -34,13 +34,12 @@ namespace BreakTimeApp.ViewModels.Pages
             _dataService = new TimeStoreItemDataService(new TimeStoreItemDbContext());
             _windowsProviderService = windowsProviderService;
             _items = new ObservableCollection<TimeStoreItem>();
-            LoadItemsAsync().Wait();
+            LoadItemsAsync();
             ToastEventHandler();
         }
 
         private void ToastEventHandler()
         {
-            // TODO: トースト処理を別クラスに記述
             // トースト通知がアクティブ化されたときに呼び出されるイベントハンドラを設定
             ToastNotificationManagerCompat.OnActivated += toastArgs =>
             {
@@ -67,7 +66,7 @@ namespace BreakTimeApp.ViewModels.Pages
                             item.Progress = 0;
                             item.Span = TimeSpan.FromSeconds(item.MaxProgress);
                             item.Timer.Tick += item.Timer_Tick;
-                            item.Timer.Tick += item.Toast_ElapsedEventHandler;
+                            item.Timer.Tick += item.ElapsedEventHandler;
                             item.IsRunning = action == Properties.ToastResources.dismiss;
                             OnToggleItem(item);
                         }
@@ -83,7 +82,7 @@ namespace BreakTimeApp.ViewModels.Pages
         }
 
         [LogAspect]
-        private async Task LoadItemsAsync()
+        private async void LoadItemsAsync()
         {
             var itemsDb = await _dataService.GetAllTimeStoreItemsAsync();
             foreach (var itemDb in itemsDb)
@@ -114,7 +113,6 @@ namespace BreakTimeApp.ViewModels.Pages
             newItem.Icon = SymbolRegular.TriangleRight20;
             newItem.Progress = 0;
             newItem.MaxProgress = DEFAULT_TIMESPAN.TotalSeconds;
-            // 破棄イベントの処理内容を登録
             newItem.Disposed += TimeStoreItem_Disposed;
 
             AddItem(newItem);
@@ -143,15 +141,12 @@ namespace BreakTimeApp.ViewModels.Pages
             _logger.LogInformation(AppLogEvents.UserAction, "item remove");
         }
 
-        private void TimeStoreItem_Disposed(object sender, EventArgs e)
+        private async void TimeStoreItem_Disposed(object sender, EventArgs e)
         {
             if (sender is TimeStoreItem item)
             {
-                // UI表示からitemを削除する。(DBからは削除しない)
-                // ToastEventHandlerメソッドでitemの処理を決める。
-                // Items.Remove(item);
                 // DBとUI表示から削除
-                // OnRemoveItem(item);
+                await OnRemoveItem(item);
             }
         }
 

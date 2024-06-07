@@ -31,18 +31,18 @@ namespace BreakTimeApp.ViewModels.Pages
             _logger = logger;
             // Note: DbContextはスコープが違うのでインジェクションができない
             _dataService = new SelectNotifyDataService(new SelectNotifyDbContext());
-            LoadItemsAsync();
+            LoadItemAsync();
         }
 
         [LogAspect]
-        private async void LoadItemsAsync()
+        private async void LoadItemAsync()
         {
-            var itemsDb = await _dataService.GetSelectNotifyItemByIdAsync(NOTIFY_ID);
+            var item = await _dataService.GetSelectNotifyItemByIdAsync(NOTIFY_ID);
             // Note: FilePath 列に対して NOT NULL 制約があるにもかかわらず、
             // null または空の値が挿入されるためFilePathから先にDB更新を行う
-            FilePath = itemsDb.FilePath;
-            NotifyMode = itemsDb.Mode;
-            _logger.LogInformation(AppLogEvents.UserAction, "items loaded");
+            FilePath = item.FilePath;
+            NotifyMode = item.Mode;
+            _logger.LogInformation(AppLogEvents.UserAction, "item loaded");
         }
 
         [RelayCommand]

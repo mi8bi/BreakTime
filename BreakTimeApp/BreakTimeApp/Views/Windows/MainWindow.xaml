@@ -40,7 +40,7 @@
             Grid.Row="0"
             Grid.ColumnSpan="3">
             <ui:TitleBar.Icon>
-                <ui:ImageIcon Source="pack://application:,,,/Assets/Images/wpfui-icon-256.png" />
+                <ui:ImageIcon Source="pack://application:,,,/Assets/Images/ic_fluent_drink_coffee_24_filled.png" />
             </ui:TitleBar.Icon>
         </ui:TitleBar>
 
@@ -84,7 +84,7 @@
         <tray:NotifyIcon
             Grid.Row="0"
             FocusOnLeftClick="True"
-            Icon="pack://application:,,,/Assets/Images/wpfui-icon-256.png"
+            Icon="pack://application:,,,/Assets/Images/ic_fluent_drink_coffee_24_filled.png"
             MenuOnRightClick="True"
             TooltipText="BreakTimeApp">
             <tray:NotifyIcon.Menu>

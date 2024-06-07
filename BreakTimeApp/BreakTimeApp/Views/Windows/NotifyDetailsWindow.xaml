@@ -36,7 +36,7 @@
             Grid.Row="0"
             CanMaximize="False">
             <ui:TitleBar.Icon>
-                <ui:ImageIcon Source="pack://application:,,,/Assets/Images/wpfui-icon-256.png" />
+                <ui:ImageIcon Source="pack://application:,,,/Assets/Images/ic_fluent_apps_list_detail_24_filled.png" />
             </ui:TitleBar.Icon>
         </ui:TitleBar>
 

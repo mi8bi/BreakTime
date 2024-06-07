@@ -1,9 +1,9 @@
 ﻿using BreakTimeApp.Helpers;
 using BreakTimeApp.Services;
-using Microsoft.Toolkit.Uwp.Notifications;
-using System.IO;
+using BreakTimeApp.ViewModels.Pages;
+using BreakTimeApp.ViewModels.Windows;
+using BreakTimeApp.Views.Windows;
 using System.Windows.Threading;
-using Windows.UI.Notifications;
 using Wpf.Ui.Controls;
 using MessageBox = System.Windows.MessageBox;
 
@@ -17,6 +17,9 @@ namespace BreakTimeApp.Models
          * </summary>
          */
         private static readonly double INTERVAL = 1;
+
+        private readonly IServiceProvider _serviceProvider;
+        private readonly WindowsProviderService _windowsProviderService;
 
         public DispatcherTimer Timer { get; set; }
 
@@ -40,19 +43,18 @@ namespace BreakTimeApp.Models
         [ObservableProperty]
         private double _maxProgress;
 
-        /**
-         * <summary>
-         * 破棄されたことをイベント通知
-         * </summary>
-         */
         public event EventHandler Disposed;
-
-        public TimeStoreItem()
+        public TimeStoreItem(
+            IServiceProvider serviceProvider,
+            WindowsProviderService windowsProviderService
+            )
         {
+            _serviceProvider = serviceProvider;
+            _windowsProviderService = windowsProviderService;
             Timer = new DispatcherTimer();
             Timer.Interval = TimeSpan.FromSeconds(INTERVAL);
             Timer.Tick += Timer_Tick;
-            Timer.Tick += Toast_ElapsedEventHandler;
+            Timer.Tick += ElapsedEventHandler;
         }
 
         partial void OnNameChanged(string? oldValue, string newValue)
@@ -110,37 +112,35 @@ namespace BreakTimeApp.Models
         }
 
         [LogAspect]
-        public void Toast_ElapsedEventHandler(object? sender, EventArgs e)
+        public async void ElapsedEventHandler(object? sender, EventArgs e)
         {
             if (!IsRunning && Progress >= MaxProgress)
             {
-#if WINDOWS10_0_17763_0_OR_GREATER
-                // Toastを組み立てる
-                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string acceptImagePath = Path.Combine(baseDirectory, "Assets/Images/ic_fluent_checkmark_24_filled.png");
-                string snoozeImagePath = Path.Combine(baseDirectory, "Assets/Images/ic_fluent_snooze_24_filled.png");
-                string dismissImagePath = Path.Combine(baseDirectory, "Assets/Images/ic_fluent_dismiss_24_filled.png");
-                var toastContent = new ToastContentBuilder()
-                    .AddText(Name)
-                    .AddArgument(Properties.ToastResources.guid, ID.ToString())
-                    .AddButton(new ToastButton()
-                        .SetContent(Properties.ToastResources.acceptContent)
-                        .AddArgument(Properties.ToastResources.action, Properties.ToastResources.accept)
-                        .SetImageUri(new Uri(acceptImagePath)))
-                    .AddButton(new ToastButton()
-                        .SetContent(Properties.ToastResources.snoozeContent)
-                        .AddArgument(Properties.ToastResources.action, Properties.ToastResources.snooze)
-                        .SetImageUri(new Uri(snoozeImagePath)))
-                    .AddButton(new ToastButton()
-                        .SetContent(Properties.ToastResources.dismissContent)
-                        .AddArgument(Properties.ToastResources.action, Properties.ToastResources.dismiss)
-                        .SetImageUri(new Uri(dismissImagePath)))
-                    .GetToastContent();
-                // Toastのレイアウトを作成
-                var toast = new ToastNotification(toastContent.GetXml());
-                // Toast表示
-                ToastNotificationManagerCompat.CreateToastNotifier().Show(toast);
-#endif
+                // Note: DbContextはスコープが違うのでインジェクションができない
+                ISelectNotifyDataService dataService = new SelectNotifyDataService(new SelectNotifyDbContext());
+                var item = await dataService.GetSelectNotifyItemByIdAsync(SelectNotifyViewModel.NOTIFY_ID);
+
+                if (item.Mode == NotifyMode.Desktop)
+                {
+                    // デスクトップ通知
+                    INotifyEvent notifyEventHandler = new ToastNotifyEvent(ID.ToString(), Name);
+                    notifyEventHandler.Notify();
+                }
+                else if (item.Mode == NotifyMode.FullScreen)
+                {
+                    // フルスクリーン通知
+                    // 1. FullScreenWindowのViewModelを取得してデータを設定
+                    var viewModel = _serviceProvider.GetService(typeof(FullScreenWindowViewModel))
+                        as FullScreenWindowViewModel;
+                    viewModel.ImageSource = item.FilePath;
+                    viewModel.CloseRequested += (s, e) =>
+                    {
+                        // アイテム削除
+                        Disposed?.Invoke(this, EventArgs.Empty);
+                    };
+                    // 2. 1で設定したデータが入力されているのでウィンドウを表示
+                    _windowsProviderService.ShowDialog<FullScreenWindow>();
+                }
 
                 Dispose();
             }
@@ -164,9 +164,7 @@ namespace BreakTimeApp.Models
         public void Dispose()
         {
             Timer.Tick -= Timer_Tick;
-            Timer.Tick -= Toast_ElapsedEventHandler;
-            // 破棄されたことをイベント通知
-            Disposed?.Invoke(this, EventArgs.Empty);
+            Timer.Tick -= ElapsedEventHandler;
         }
     }
 }

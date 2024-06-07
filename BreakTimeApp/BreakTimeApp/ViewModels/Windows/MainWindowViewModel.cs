@@ -43,12 +43,6 @@ namespace BreakTimeApp.ViewModels.Windows
                     Icon = new SymbolIcon { Symbol = SymbolRegular.MultiselectLtr24 },
                     TargetPageType = typeof(Views.Pages.SelectNotifyPage)
                 },
-                new NavigationViewItem()
-                {
-                    Content = Properties.MainWindowResources.data,
-                    Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
-                    TargetPageType = typeof(Views.Pages.DataPage)
-                },
             };
 
             FooterMenuItems = new ObservableCollection<object>
