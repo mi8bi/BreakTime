@@ -3,6 +3,8 @@ using BreakTimeApp.Services;
 using BreakTimeApp.ViewModels.Pages;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Reflection.Metadata;
+using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
 namespace BreakTimeApp.ViewModels.Windows

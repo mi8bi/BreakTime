@@ -27,6 +27,7 @@ namespace BreakTimeApp.Views.Windows
             navigationService.SetNavigationControl(RootNavigation);
             // ウィンドウを閉じる処理
             Closing += MainWindow_Closing;
+            initializeTheme();
         }
 
         private void MainWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
@@ -89,5 +90,19 @@ namespace BreakTimeApp.Views.Windows
             base.OnClosed(e);
             Application.Current.Shutdown();
         }
+
+        private void initializeTheme()
+        {
+            switch (Properties.Settings.Default.Theme)
+            {
+                case "theme_light":
+                    ApplicationThemeManager.Apply(ApplicationTheme.Light);
+                    break;
+                default:
+                    ApplicationThemeManager.Apply(ApplicationTheme.Dark);
+                    break;
+            }
+        }
+
     }
 }

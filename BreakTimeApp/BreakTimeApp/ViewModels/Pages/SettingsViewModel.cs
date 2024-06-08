@@ -27,7 +27,7 @@ namespace BreakTimeApp.ViewModels.Pages
         [LogAspect]
         private void InitializeViewModel()
         {
-            CurrentTheme = ApplicationThemeManager.GetAppTheme();
+            OnChangeTheme(Properties.Settings.Default.Theme);
             AppVersion = $"{Properties.AppInfoResources.app_name} - {GetAssemblyVersion()}";
 
             _isInitialized = true;
@@ -64,12 +64,10 @@ namespace BreakTimeApp.ViewModels.Pages
 
                     break;
             }
+
+            Properties.Settings.Default.Theme = parameter;
+            Properties.Settings.Default.Save();
         }
 
-        [LogAspect]
-        private T GetResource<T>(string key)
-        {
-            return (T)Application.Current.Resources[key];
-        }
     }
 }
