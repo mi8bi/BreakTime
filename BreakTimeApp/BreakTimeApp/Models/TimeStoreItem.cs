@@ -57,7 +57,7 @@ namespace BreakTimeApp.Models
             Timer.Tick += ElapsedEventHandler;
         }
 
-        partial void OnNameChanged(string? oldValue, string newValue)
+        async partial void OnNameChanged(string? oldValue, string newValue)
         {
             if (string.IsNullOrWhiteSpace(newValue))
             {
@@ -68,32 +68,32 @@ namespace BreakTimeApp.Models
                     MessageBoxImage.Error);
             }
 
-            _ = UpdateItemInDatabase();
+            await UpdateItemInDatabase();
         }
 
-        partial void OnSpanChanged(TimeSpan value)
+        async partial void OnSpanChanged(TimeSpan value)
         {
-            _ = UpdateItemInDatabase();
+            await UpdateItemInDatabase();
         }
 
-        partial void OnIsRunningChanged(bool value)
+        async partial void OnIsRunningChanged(bool value)
         {
-            _ = UpdateItemInDatabase();
+            await UpdateItemInDatabase();
         }
 
-        partial void OnIconChanged(SymbolRegular value)
+        async partial void OnIconChanged(SymbolRegular value)
         {
-            _ = UpdateItemInDatabase();
+            await UpdateItemInDatabase();
         }
 
-        partial void OnProgressChanged(double value)
+        async partial void OnProgressChanged(double value)
         {
-            _ = UpdateItemInDatabase();
+            await UpdateItemInDatabase();
         }
 
-        partial void OnMaxProgressChanged(double value)
+        async partial void OnMaxProgressChanged(double value)
         {
-            _ = UpdateItemInDatabase();
+            await UpdateItemInDatabase();
         }
 
         private async Task UpdateItemInDatabase()

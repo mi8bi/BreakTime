@@ -88,6 +88,11 @@ namespace BreakTimeApp.ViewModels.Pages
             foreach (var itemDb in itemsDb)
             {
                 TimeStoreItem item = TimeStoreItemToDbConverter.ConvertBack(itemDb);
+                if (!item.IsRunning)
+                {
+                    item.IsRunning = !item.IsRunning;
+                    item.Icon = SymbolRegular.TriangleRight20;
+                }
                 item.Disposed += TimeStoreItem_Disposed;
                 Items.Add(item);
             }

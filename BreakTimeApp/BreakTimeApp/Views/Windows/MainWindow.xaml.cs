@@ -1,4 +1,6 @@
 ﻿using BreakTimeApp.Helpers;
+using BreakTimeApp.Models;
+using BreakTimeApp.Services;
 using BreakTimeApp.ViewModels.Windows;
 using Wpf.Ui;
 using Wpf.Ui.Appearance;
