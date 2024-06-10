@@ -47,5 +47,20 @@
             FontWeight="Medium"
             Text="About BreakTimeApp" />
         <TextBlock Margin="0,12,0,0" Text="{Binding ViewModel.AppVersion, Mode=OneWay}" />
+
+        <TextBlock
+            Margin="0,24,0,0"
+            FontSize="20"
+            FontWeight="Medium"
+            Text="License" />
+        <TextBlock Margin="0,12,0,0" Text="MIT License" />
+
+        <TextBlock
+            Margin="0,24,0,0"
+            FontSize="20"
+            FontWeight="Medium"
+            Text="Copyright" />
+        <TextBlock Margin="0,12,0,0" Text="Copyright (c) 2024 mi8bi" />
+
     </StackPanel>
 </Page>
