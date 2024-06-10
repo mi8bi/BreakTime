@@ -99,7 +99,14 @@ namespace BreakTimeApp.Models
         private async Task UpdateItemInDatabase()
         {
             ITimeStoreItemDataService dataService = new TimeStoreItemDataService(new TimeStoreItemDbContext());
-            await dataService.UpdateTimeStoreItemAsync(TimeStoreItemToDbConverter.Convert(this));
+            TimeStoreItemDb itemDb = TimeStoreItemToDbConverter.Convert(this);
+
+            // Databaseにitemが存在するかどうか確認
+            if (await dataService.GetTimeStoreItemByIdAsync(itemDb.ID) != null)
+            {
+                // 存在する場合は更新を行う
+                await dataService.UpdateTimeStoreItemAsync(itemDb);
+            }
         }
 
         [LogAspect]

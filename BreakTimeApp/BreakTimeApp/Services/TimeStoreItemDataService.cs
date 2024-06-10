@@ -74,6 +74,13 @@ namespace BreakTimeApp.Services
         [LogAspect]
         public async Task UpdateTimeStoreItemAsync(TimeStoreItemDb item)
         {
+            var existingEntity = _context.ChangeTracker.Entries<TimeStoreItemDb>()
+                                         .FirstOrDefault(e => e.Entity.ID == item.ID)?.Entity;
+            if (existingEntity != null)
+            {
+                _context.Entry(existingEntity).State = EntityState.Detached;
+            }
+
             _context.TimeStoreItems.Update(item);
             await _context.SaveChangesAsync();
         }

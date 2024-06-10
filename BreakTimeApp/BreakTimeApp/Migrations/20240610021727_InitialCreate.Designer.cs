@@ -10,18 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BreakTimeApp.Migrations
 {
     [DbContext(typeof(TimeStoreItemDbContext))]
-    [Migration("20240602071817_InitialCreate")]
+    [Migration("20240610021727_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
-                .HasAnnotation("Proxies:ChangeTracking", false)
-                .HasAnnotation("Proxies:CheckEquality", false)
-                .HasAnnotation("Proxies:LazyLoading", true);
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
 
             modelBuilder.Entity("BreakTimeApp.Models.TimeStoreItemDb", b =>
                 {

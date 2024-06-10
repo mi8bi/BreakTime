@@ -33,36 +33,6 @@ namespace BreakTimeApp.Migrations.SelectNotifyDb
 
                     b.ToTable("SelectNotifyItems");
                 });
-
-            modelBuilder.Entity("BreakTimeApp.Models.TimeStoreItemDb", b =>
-                {
-                    b.Property<string>("ID")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Icon")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("IsRunning")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<double>("MaxProgress")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<double>("Progress")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("Span")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("TimeStoreItemDb");
-                });
 #pragma warning restore 612, 618
         }
     }
