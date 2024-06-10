@@ -8,6 +8,9 @@
 # BreakTime
 一定時間後に通知する常駐アプリ
 
+## ダウンロード
+[こちら](https://github.com/mi8bi/BreakTime/releases/latest)のAssets > zipファイルからダウンロードできます。
+
 # スクリーンショット
 
 ## ![notify](screenshots/notify.png)
