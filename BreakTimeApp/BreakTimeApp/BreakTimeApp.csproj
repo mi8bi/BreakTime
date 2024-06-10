@@ -1,0 +1,249 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows10.0.17763.0</TargetFramework>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<ApplicationIcon>app.ico</ApplicationIcon>
+		<ProductVersion>0.1.0</ProductVersion>
+		<AssemblyVersion>0.1.0</AssemblyVersion>
+		<AssemblyFileVersion>0.1.0</AssemblyFileVersion>
+		<Description>通知時間の設定に基づき通知を行います</Description>
+		<Guid>1087E2BE-7A8C-49FC-BFFB-EAA699FBF19C</Guid>
+		<Copyright>mi8bi</Copyright>
+		<UseWPF>true</UseWPF>
+		<Nullable>enable</Nullable>
+		<ComVisible>false</ComVisible>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="appsettings.Development.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Assets\Images\default_wallpaper.jpg">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="app.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AspectInjector" Version="2.8.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.6" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
+		<PackageReference Include="NLog" Version="5.3.2" />
+		<PackageReference Include="NLog.Extensions.Logging" Version="5.3.11" />
+		<PackageReference Include="WPF-UI" Version="3.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0 " />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2 " />
+		<PackageReference Include="WPF-UI.Tray" Version="3.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="appsettings.Development.json" />
+		<None Remove="Assets\Images\default_wallpaper.jpg" />
+		<None Remove="Assets\Images\ic_fluent_apps_list_detail_24_filled.png" />
+		<None Remove="Assets\Images\ic_fluent_checkmark_24_filled.png" />
+		<None Remove="Assets\Images\ic_fluent_dismiss_24_filled.png" />
+		<None Remove="Assets\Images\ic_fluent_drink_coffee_24_filled.png" />
+		<None Remove="Assets\Images\ic_fluent_snooze_24_filled.png" />
+		<None Remove="Assets\Images\sample_desktop_notify.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Assets\Images\ic_fluent_checkmark_24_filled.png">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Assets\Images\ic_fluent_dismiss_24_filled.png">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Assets\Images\ic_fluent_snooze_24_filled.png">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Resource Include="Assets\Images\ic_fluent_apps_list_detail_24_filled.png" />
+		<Resource Include="Assets\Images\ic_fluent_drink_coffee_24_filled.png" />
+		<Resource Include="Assets\Images\sample_desktop_notify.png">
+		  <CopyToOutputDirectory></CopyToOutputDirectory>
+		</Resource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="MessageResources.Designer.cs">
+	    <DependentUpon>MessageResources.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\AppInfoResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>AppInfoResources.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Properties\DbResources.Designer.cs">
+	    <DependentUpon>DbResources.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\DbResources.ja-JP.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>DbResources.ja-JP.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Properties\MessageResources.ja-JP.Designer.cs">
+	    <DependentUpon>MessageResources.ja-JP.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\MessageResources.Designer.cs">
+	    <DependentUpon>MessageResources.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\Settings.Designer.cs">
+	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Settings.settings</DependentUpon>
+	  </Compile>
+	  <Compile Update="Properties\ToastResources.ja-JP.Designer.cs">
+	    <DependentUpon>ToastResources.ja-JP.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\ToastResources.Designer.cs">
+	    <DependentUpon>ToastResources.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\TrayResources.Designer.cs">
+	    <DependentUpon>TrayResources.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\TrayResources.ja-JP.Designer.cs">
+	    <DependentUpon>TrayResources.ja-JP.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\NotifyPageResources.Designer.cs">
+	    <DependentUpon>NotifyPageResources.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\NotifyPageResources.ja-JP.Designer.cs">
+	    <DependentUpon>NotifyPageResources.ja-JP.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\NotifyDetailsWindowResources.Designer.cs">
+	    <DependentUpon>NotifyDetailsWindowResources.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\NotifyDetailsWindowResources.ja-JP.Designer.cs">
+	    <DependentUpon>NotifyDetailsWindowResources.ja-JP.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\MainWindowResources.Designer.cs">
+	    <DependentUpon>MainWindowResources.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\MainWindowResources.ja-JP.Designer.cs">
+	    <DependentUpon>MainWindowResources.ja-JP.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Properties\AppInfoResources.ja-JP.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>AppInfoResources.ja-JP.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="MessageResources.resx">
+	    <LastGenOutput>MessageResources.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\AppInfoResources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>AppInfoResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\DbResources.resx">
+	    <LastGenOutput>DbResources.Designer.cs</LastGenOutput>
+	    <Generator>ResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\DbResources.ja-JP.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>DbResources.ja-JP.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\MessageResources.ja-JP.resx">
+	    <LastGenOutput>MessageResources.ja-JP.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\MessageResources.resx">
+	    <LastGenOutput>MessageResources.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\ToastResources.ja-JP.resx">
+	    <LastGenOutput>ToastResources.ja-JP.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\ToastResources.resx">
+	    <LastGenOutput>ToastResources.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\TrayResources.resx">
+	    <LastGenOutput>TrayResources.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\TrayResources.ja-JP.resx">
+	    <LastGenOutput>TrayResources.ja-JP.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\NotifyPageResources.resx">
+	    <LastGenOutput>NotifyPageResources.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\NotifyPageResources.ja-JP.resx">
+	    <LastGenOutput>NotifyPageResources.ja-JP.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\NotifyDetailsWindowResources.resx">
+	    <LastGenOutput>NotifyDetailsWindowResources.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\NotifyDetailsWindowResources.ja-JP.resx">
+	    <LastGenOutput>NotifyDetailsWindowResources.ja-JP.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\MainWindowResources.resx">
+	    <LastGenOutput>MainWindowResources.Designer.cs</LastGenOutput>
+	    <Generator>ResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\MainWindowResources.ja-JP.resx">
+	    <LastGenOutput>MainWindowResources.ja-JP.Designer.cs</LastGenOutput>
+	    <Generator>ResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Properties\AppInfoResources.ja-JP.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>AppInfoResources.ja-JP.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Migrations\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Properties\Settings.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+	  </None>
+	</ItemGroup>
+
+</Project>
