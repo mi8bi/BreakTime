@@ -5,9 +5,9 @@
 		<TargetFramework>net8.0-windows10.0.17763.0</TargetFramework>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<ApplicationIcon>app.ico</ApplicationIcon>
-		<ProductVersion>0.1.0</ProductVersion>
-		<AssemblyVersion>0.1.0</AssemblyVersion>
-		<AssemblyFileVersion>0.1.0</AssemblyFileVersion>
+		<ProductVersion>0.1.1</ProductVersion>
+		<AssemblyVersion>0.1.1</AssemblyVersion>
+		<AssemblyFileVersion>0.1.1</AssemblyFileVersion>
 		<Description>通知時間の設定に基づき通知を行います</Description>
 		<Guid>1087E2BE-7A8C-49FC-BFFB-EAA699FBF19C</Guid>
 		<Copyright>mi8bi</Copyright>
