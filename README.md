@@ -1,7 +1,7 @@
 ![dotnet](https://img.shields.io/badge/WPF-8.0-512BD4?logo=.net)
 ![C#](https://img.shields.io/badge/c%23-239120)
-![WPF UI](https://img.shields.io/badge/WPF%20UI-blue?link=https%3A%2F%2Fwpfui.lepo.co%2Findex.html)
-![entity-framework](https://img.shields.io/badge/entity--framework-blue?link=https%3A%2F%2Flearn.microsoft.com%2Fja-jp%2Fef%2F)
+![WPF UI](https://img.shields.io/badge/WPF%20UI-blue)
+![entity-framework](https://img.shields.io/badge/entity--framework-blue)
 ![SQLite](https://img.shields.io/badge/SQLite-07405e?logo=sqlite)
 ![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)
 
