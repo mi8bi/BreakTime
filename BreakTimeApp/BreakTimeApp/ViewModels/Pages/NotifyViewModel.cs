@@ -107,7 +107,7 @@ namespace BreakTimeApp.ViewModels.Pages
 
         [LogAspect]
         [RelayCommand]
-        private void OnAddItem()
+        private async void OnAddItem()
         {
             // 新しいアイテムを追加
             TimeStoreItem newItem = App.GetService<TimeStoreItem>();
@@ -120,7 +120,7 @@ namespace BreakTimeApp.ViewModels.Pages
             newItem.MaxProgress = DEFAULT_TIMESPAN.TotalSeconds;
             newItem.Disposed += TimeStoreItem_Disposed;
 
-            AddItem(newItem);
+            await AddItem(newItem);
         }
 
         [LogAspect]
@@ -141,6 +141,7 @@ namespace BreakTimeApp.ViewModels.Pages
             if (findItem == null) return;
             // 見つかった場合は削除する
             Items.Remove(findItem);
+            findItem.Dispose();
             await _dataService.DeleteTimeStoreItemAsync(item.ID.ToString());
 
             _logger.LogInformation(AppLogEvents.UserAction, "item remove");
