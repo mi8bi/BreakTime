@@ -9,7 +9,7 @@
 一定時間後に通知する常駐アプリ
 
 ## ダウンロード
-[こちら](https://github.com/mi8bi/BreakTime/releases/latest)のAssets > zipファイルからダウンロードできます。
+[こちら](https://github.com/mi8bi/BreakTime/releases/download/v0.1.1-alpha/BreakTimeApp-v0.1.1-alpha.zip)からダウンロードできます。
 
 # スクリーンショット
 
