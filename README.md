@@ -13,7 +13,9 @@ you can download it here [here](https://github.com/mi8bi/BreakTime/releases/down
 
 # Screenshots
 
-## ![notify](screenshots/notify.png)
+## ![notify](screenshots/notify.jpg)
+
+## ![toast](screenshots/toast.jpg)
 
 # Requirements
 
