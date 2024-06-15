@@ -6,40 +6,40 @@
 ![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 # BreakTime
-一定時間後に通知する常駐アプリ
+A resident app that notifies you after a certain period of time
 
-## ダウンロード
-[こちら](https://github.com/mi8bi/BreakTime/releases/download/v0.1.1-alpha/BreakTimeApp-v0.1.1-alpha.zip)からダウンロードできます。
+## Download
+you can download it here [here](https://github.com/mi8bi/BreakTime/releases/download/v0.1.1-alpha/BreakTimeApp-v0.1.1-alpha.zip)
 
-# スクリーンショット
+# Screenshots
 
 ## ![notify](screenshots/notify.png)
 
-# 必要条件
+# Requirements
 
-  - Windows10 1809以降
+  - Windows 10 version 1809 or later
   - .NET Runtime 8.0
     - https://dotnet.microsoft.com/ja-jp/download/dotnet/8.0 
   
-# 使い方
+# Usage
 
-1. 「通知」メニューを選択
-2. ∔ボタンを押下し通知を登録    
-3. ▷ボタンを押下し通知のタイマーをスタート
-4. タイマーが0になると通知が行われる
+1. Select the "Notify" menu.
+2. Press the ∔ button to add a notification.
+3. Press the ▷ button to start the notification timer.
+4. When the timer reaches zero, a notification will be displayed.
 
-## 通知方法
+## Notification Methods
 
-### デスクトップ通知
-Windowsの通知機能を使用してトースト通知を行います。   
+### Desktop Notification
+Uses Windows' notification feature to display toast notifications.   
 
-### 全画面表示
-画像ファイルを使用して全画面表示します。    
+### Full-Screen Notification
+Displays a full-screen image as a notification.
 
-## 終了方法
-Windowsのタスクトレイから本アプリを右クリックして終了します。
+## How to Exit
+Right-click the app icon in the Windows task tray and select "Exit".
 
-# ライセンス情報
+# License Information
 MIT License
 
 Copyright (c) 2024 mi8bi
